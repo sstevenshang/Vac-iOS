@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686C951B5DF3A100403429 /* AppDelegate.swift */; };
-		A4686C981B5DF3A100403429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686C971B5DF3A100403429 /* ViewController.swift */; };
 		A4686C9B1B5DF3A100403429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4686C991B5DF3A100403429 /* Main.storyboard */; };
 		A4686C9D1B5DF3A100403429 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4686C9C1B5DF3A100403429 /* Images.xcassets */; };
 		A4686CA01B5DF3A100403429 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4686C9E1B5DF3A100403429 /* LaunchScreen.xib */; };
 		A4686CAC1B5DF3A100403429 /* VacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CAB1B5DF3A100403429 /* VacTests.swift */; };
+		A4686CBA1B5DF43700403429 /* GuillotineMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB61B5DF43700403429 /* GuillotineMenuSegue.swift */; };
+		A4686CBB1B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB71B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift */; };
+		A4686CBC1B5DF43700403429 /* GuillotineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */; };
+		A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB91B5DF43700403429 /* UIViewExtension.swift */; };
+		A4686CC01B5DF46000403429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CBF1B5DF46000403429 /* ViewController.swift */; };
+		A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +34,18 @@
 		A4686C901B5DF3A100403429 /* Vac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4686C941B5DF3A100403429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4686C951B5DF3A100403429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A4686C971B5DF3A100403429 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A4686C9A1B5DF3A100403429 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4686C9C1B5DF3A100403429 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A4686C9F1B5DF3A100403429 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A4686CA51B5DF3A100403429 /* VacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4686CAA1B5DF3A100403429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4686CAB1B5DF3A100403429 /* VacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacTests.swift; sourceTree = "<group>"; };
+		A4686CB61B5DF43700403429 /* GuillotineMenuSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuSegue.swift; sourceTree = "<group>"; };
+		A4686CB71B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuTransitionAnimation.swift; sourceTree = "<group>"; };
+		A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
+		A4686CB91B5DF43700403429 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		A4686CBF1B5DF46000403429 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +87,9 @@
 		A4686C921B5DF3A100403429 /* Vac */ = {
 			isa = PBXGroup;
 			children = (
+				A4686CBE1B5DF46000403429 /* ViewControllers */,
+				A4686CB51B5DF43700403429 /* GuillotineMenu */,
 				A4686C951B5DF3A100403429 /* AppDelegate.swift */,
-				A4686C971B5DF3A100403429 /* ViewController.swift */,
 				A4686C991B5DF3A100403429 /* Main.storyboard */,
 				A4686C9C1B5DF3A100403429 /* Images.xcassets */,
 				A4686C9E1B5DF3A100403429 /* LaunchScreen.xib */,
@@ -110,6 +121,26 @@
 				A4686CAA1B5DF3A100403429 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4686CB51B5DF43700403429 /* GuillotineMenu */ = {
+			isa = PBXGroup;
+			children = (
+				A4686CB61B5DF43700403429 /* GuillotineMenuSegue.swift */,
+				A4686CB71B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift */,
+				A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */,
+				A4686CB91B5DF43700403429 /* UIViewExtension.swift */,
+			);
+			path = GuillotineMenu;
+			sourceTree = "<group>";
+		};
+		A4686CBE1B5DF46000403429 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4686CBF1B5DF46000403429 /* ViewController.swift */,
+				A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +243,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4686C981B5DF3A100403429 /* ViewController.swift in Sources */,
+				A4686CC01B5DF46000403429 /* ViewController.swift in Sources */,
+				A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */,
+				A4686CBA1B5DF43700403429 /* GuillotineMenuSegue.swift in Sources */,
+				A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */,
+				A4686CBC1B5DF43700403429 /* GuillotineMenuViewController.swift in Sources */,
+				A4686CBB1B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +447,7 @@
 				A4686CB11B5DF3A100403429 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4686CB21B5DF3A100403429 /* Build configuration list for PBXNativeTarget "VacTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +456,7 @@
 				A4686CB41B5DF3A100403429 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
