@@ -26,8 +26,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println(searchBar.center)
-        println(menuButton.frame.origin)
+        println(searchBar.frame.height)
+        println(searchBar.frame.width)
+        println(searchBar.font)
         
     }
 

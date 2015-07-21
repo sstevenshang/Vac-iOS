@@ -82,13 +82,18 @@ class GuillotineTransitionAnimation: NSObject {
     
     private func showSearchBar(show: Bool, animated: Bool) {
         
-        var fuckingSearchBar: UITextField = UITextField(frame: CGRect(x: 22.0, y: 187.5, width: 238.0, height: 30.00))
+        var fuckingSearchBar: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 252.0, height: 30.00))
         
         fuckingSearchBar.layer.cornerRadius = 15.0
         fuckingSearchBar.backgroundColor = UIColor.blackColor()
         fuckingSearchBar.textColor = UIColor.grayColor()
-        fuckingSearchBar.attributedPlaceholder = NSAttributedString(string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
-        
+
+        let font = UIFont(name: ".HelveticaNeueInterface-Regular", size: 14)!
+
+        //fuckingSearchBar.attributedPlaceholder = NSAttributedString(string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor(), NSFontAttributeName: font])
+
+        fuckingSearchBar.textAlignment = NSTextAlignment.Center
+        fuckingSearchBar.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
         
         fuckingSearchBar.alpha = 0
 
@@ -103,6 +108,8 @@ class GuillotineTransitionAnimation: NSObject {
         
         UIView.animateWithDuration(duration, animations: { () -> Void in
             fuckingSearchBar.alpha = 1.0 }, completion: nil)
+        
+        
 
         
     }
