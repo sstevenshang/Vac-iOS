@@ -8,10 +8,9 @@
 
 import UIKit
 
-@objc protocol GuillotineAnimationProtocol: NSObjectProtocol {
+@objc protocol GuillotineAnimationProtocol: NSObjectProtocol, UITextFieldDelegate {
     func navigationBarHeight() -> CGFloat
     func anchorPoint() -> CGPoint
-    //func hostTitle () -> NSString
 }
 
 @objc protocol GuillotineAnimationDelegate: NSObjectProtocol {
@@ -76,6 +75,36 @@ class GuillotineTransitionAnimation: NSObject {
         let host = context.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         animator.delegate = self
         animateMenu(menu.view, context: context)
+        
+    }
+    
+    //MARK: SearchBar
+    
+    private func showSearchBar(show: Bool, animated: Bool) {
+        
+        var fuckingSearchBar: UITextField = UITextField(frame: CGRect(x: 22.0, y: 187.5, width: 238.0, height: 30.00))
+        
+        fuckingSearchBar.layer.cornerRadius = 15.0
+        fuckingSearchBar.backgroundColor = UIColor.blackColor()
+        fuckingSearchBar.textColor = UIColor.grayColor()
+        fuckingSearchBar.attributedPlaceholder = NSAttributedString(string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
+        
+        
+        fuckingSearchBar.alpha = 0
+
+        menu.view.addSubview(fuckingSearchBar)
+        
+        println("added searchbar")
+        
+        fuckingSearchBar.center = CGPointMake(22, 187.5 + statusbarHeight)
+        //(navigationBarHeight / 2, CGRectGetWidth(menu.view.frame)/2)
+        
+        fuckingSearchBar.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 )
+        
+        UIView.animateWithDuration(duration, animations: { () -> Void in
+            fuckingSearchBar.alpha = 1.0 }, completion: nil)
+
+        
     }
     
     private func animateMenu(view: UIView, context:UIViewControllerContextTransitioning) {
@@ -91,29 +120,21 @@ class GuillotineTransitionAnimation: NSObject {
         var rotationDirection = CGVectorMake(0, -vectorDY)
         attachmentBehaviour = UIAttachmentBehavior(item: view, offsetFromCenter: UIOffsetMake(-view.bounds.size.width/2+anchorPoint.x, -view.bounds.size.height/2+anchorPoint.y), attachedToAnchor: anchorPoint)
         if self.mode == .Presentation {
-            //showHostTitleLabel(false, animated: true)
+
             view.transform = CGAffineTransformRotate(CGAffineTransformIdentity, (initialMenuRotationAngle / 180.0) * CGFloat(M_PI));
             view.frame = CGRectMake(-statusbarHeight, -CGRectGetHeight(view.frame)+statusbarHeight+navigationBarHeight, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame))
             rotationDirection = CGVectorMake(0, vectorDY)
             
-            if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), CGRectGetHeight(context.containerView().frame)+0.6),
-                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), CGRectGetHeight(context.containerView().frame)+0.6))
-            } else {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)/2),
-                                                                          toPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)))
-            }
+            collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)/2), toPoint: CGPointMake(-0.6, CGRectGetHeight(context.containerView().frame)))
             
         } else {
-            //showHostTitleLabel(true, animated: true)
-            if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView().frame)/2),
-                                                                          toPoint: CGPointMake(-0.6, -CGRectGetHeight(context.containerView().frame)))
-            } else {
-                collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView().frame)/2, -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight),
-                                                                          toPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight))
-            }
+
+            showSearchBar(true, animated: true)
+            
+            collisionBehaviour.addBoundaryWithIdentifier("collide", fromPoint: CGPointMake(CGRectGetHeight(context.containerView().frame)/2, -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight), toPoint: CGPointMake(CGRectGetHeight(context.containerView().frame), -CGRectGetWidth(context.containerView().frame)+statusbarHeight+navigationBarHeight))
+            
         }
+        
         animator.addBehavior(self.attachmentBehaviour)
         
         collisionBehaviour.addItem(view)
@@ -131,37 +152,7 @@ class GuillotineTransitionAnimation: NSObject {
         animator.addBehavior(self.fallBehaviour)
         fallBehaviour.addItem(view)
     }
-    
-    /*private func showHostTitleLabel(show: Bool, animated: Bool) {
-        let hostTitleLabel = UILabel()
-        menu.view.addSubview(hostTitleLabel)
-        hostTitleLabel.numberOfLines = 1;
-        
-        if let menuProt = menu as? protocol<GuillotineAnimationProtocol> {
-            hostTitleLabel.text = menuProt.hostTitle() as String
-        }
-        
-        hostTitleLabel.font = UIFont.boldSystemFontOfSize(17)
-        hostTitleLabel.textColor = UIColor.whiteColor()
-        hostTitleLabel.sizeToFit()
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        hostTitleLabel.center = CGPointMake(navigationBarHeight / 2, CGRectGetWidth(menu.view.frame) / 2 + statusBarHeight)
-        hostTitleLabel.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 );
-        if mode == .Presentation {
-            hostTitleLabel.alpha = 1;
-        } else {
-            hostTitleLabel.alpha = 0;
-        }
-        
-        if animated {
-            UIView.animateWithDuration(duration, animations: { () -> Void in
-                hostTitleLabel.alpha = CGFloat(show)
-                }, completion: nil)
-        } else {
-            hostTitleLabel.alpha = CGFloat(show)
-        }
-    }
-    */
+
 }
 
 extension GuillotineTransitionAnimation: UIViewControllerAnimatedTransitioning {

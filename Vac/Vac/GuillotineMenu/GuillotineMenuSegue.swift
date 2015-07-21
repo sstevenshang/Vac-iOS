@@ -12,7 +12,6 @@ private var key = 0
 
 class GuillotineMenuSegue: UIStoryboardSegue {
 
-/*
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
 
         if let animationDelegate = destination as? protocol<GuillotineAnimationDelegate> {
@@ -22,7 +21,6 @@ class GuillotineMenuSegue: UIStoryboardSegue {
         }
         super.init(identifier: identifier, source: source, destination: destination)
     }
-*/
     
     override func perform() {
         let source = sourceViewController as! UIViewController

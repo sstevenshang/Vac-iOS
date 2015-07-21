@@ -19,11 +19,15 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        println(searchBar.center)
+        println(menuButton.frame.origin)
         
     }
 
@@ -36,9 +40,6 @@ class ViewController: UIViewController {
 
         let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
         destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
-        
-        //destinationVC.hostTitleText = self.navigationItem.title
-        
         destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
         destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
     }
