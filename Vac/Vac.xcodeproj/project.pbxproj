@@ -18,6 +18,7 @@
 		A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB91B5DF43700403429 /* UIViewExtension.swift */; };
 		A4686CC01B5DF46000403429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CBF1B5DF46000403429 /* ViewController.swift */; };
 		A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */; };
+		A4AA9AB31B5E2BA800CE09AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB21B5E2BA800CE09AE /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		A4686CB91B5DF43700403429 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A4686CBF1B5DF46000403429 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
+		A4AA9AB21B5E2BA800CE09AE /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				A4686C9C1B5DF3A100403429 /* Images.xcassets */,
 				A4686C9E1B5DF3A100403429 /* LaunchScreen.xib */,
 				A4686C931B5DF3A100403429 /* Supporting Files */,
+				A4AA9AB21B5E2BA800CE09AE /* CustomTextField.swift */,
 			);
 			path = Vac;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */,
 				A4686CBA1B5DF43700403429 /* GuillotineMenuSegue.swift in Sources */,
 				A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */,
+				A4AA9AB31B5E2BA800CE09AE /* CustomTextField.swift in Sources */,
 				A4686CBC1B5DF43700403429 /* GuillotineMenuViewController.swift in Sources */,
 				A4686CBB1B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */,
