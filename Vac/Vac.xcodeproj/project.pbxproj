@@ -24,6 +24,7 @@
 		A4AA9ABA1B5EEE0700CE09AE /* DictionarySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB91B5EEE0700CE09AE /* DictionarySource.swift */; };
 		A4AA9ABC1B5EEE2500CE09AE /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9ABB1B5EEE2500CE09AE /* Word.swift */; };
 		A4AA9ABE1B5EEE4300CE09AE /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9ABD1B5EEE4300CE09AE /* WordCell.swift */; };
+		AEF336175716B4D4913D5B6E /* libPods-Vac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE17180D5834FFA8AEE7B019 /* libPods-Vac.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B146B01A628B951B78A763A /* Pods-Vac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vac/Pods-Vac.debug.xcconfig"; sourceTree = "<group>"; };
 		A4686C901B5DF3A100403429 /* Vac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4686C941B5DF3A100403429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4686C951B5DF3A100403429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
 		A4686CB91B5DF43700403429 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A4686CBF1B5DF46000403429 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A46C520C1B601A0800A38A56 /* Vac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vac-Bridging-Header.h"; sourceTree = "<group>"; };
 		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		A4AA9AB21B5E2BA800CE09AE /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		A4AA9AB91B5EEE0700CE09AE /* DictionarySource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionarySource.swift; sourceTree = "<group>"; };
 		A4AA9ABB1B5EEE2500CE09AE /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		A4AA9ABD1B5EEE4300CE09AE /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		CE17180D5834FFA8AEE7B019 /* libPods-Vac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Vac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDA28C26657E82CD5223AD5 /* Pods-Vac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vac/Pods-Vac.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEF336175716B4D4913D5B6E /* libPods-Vac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,12 +84,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04354F45610DF01DD23FF328 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE17180D5834FFA8AEE7B019 /* libPods-Vac.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6452FCE67231895ACF7D0EF5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1B146B01A628B951B78A763A /* Pods-Vac.debug.xcconfig */,
+				DCDA28C26657E82CD5223AD5 /* Pods-Vac.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A4686C871B5DF3A100403429 = {
 			isa = PBXGroup;
 			children = (
 				A4686C921B5DF3A100403429 /* Vac */,
 				A4686CA81B5DF3A100403429 /* VacTests */,
 				A4686C911B5DF3A100403429 /* Products */,
+				6452FCE67231895ACF7D0EF5 /* Pods */,
+				04354F45610DF01DD23FF328 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +142,7 @@
 			children = (
 				A4686C941B5DF3A100403429 /* Info.plist */,
 				A4AA9AB21B5E2BA800CE09AE /* CustomTextField.swift */,
+				A46C520C1B601A0800A38A56 /* Vac-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4686CAF1B5DF3A100403429 /* Build configuration list for PBXNativeTarget "Vac" */;
 			buildPhases = (
+				9603AFD3EEE192DAA8E53073 /* Check Pods Manifest.lock */,
 				A4686C8C1B5DF3A100403429 /* Sources */,
 				A4686C8D1B5DF3A100403429 /* Frameworks */,
 				A4686C8E1B5DF3A100403429 /* Resources */,
+				E00E65B02F1F5282EDF93B3E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,6 +291,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9603AFD3EEE192DAA8E53073 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E00E65B02F1F5282EDF93B3E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Vac/Pods-Vac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A4686C8C1B5DF3A100403429 /* Sources */ = {
@@ -363,6 +424,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -401,6 +463,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -408,21 +471,28 @@
 		};
 		A4686CB01B5DF3A100403429 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B146B01A628B951B78A763A /* Pods-Vac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Vac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Vac/Vac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A4686CB11B5DF3A100403429 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCDA28C26657E82CD5223AD5 /* Pods-Vac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Vac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Vac/Vac-Bridging-Header.h";
 			};
 			name = Release;
 		};
