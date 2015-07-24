@@ -27,7 +27,7 @@ class GuillotineTransitionAnimation: NSObject {
     enum Mode { case Presentation, Dismissal }
     
     private let mode: Mode
-    private let duration = 0.5
+    private let duration = 0.6
     private let vectorDY: CGFloat = 1500
     private let vectorDx: CGFloat = 0.0
     private let initialMenuRotationAngle: CGFloat = -90
@@ -86,14 +86,14 @@ class GuillotineTransitionAnimation: NSObject {
         
         fuckingSearchBar.layer.cornerRadius = 15.0
         fuckingSearchBar.backgroundColor = UIColor.blackColor()
-        
-        //fuckingSearchBar.textColor = UIColor.grayColor()
-        //let font = UIFont(name: ".HelveticaNeueInterface-Regular", size: 14)!
-        //fuckingSearchBar.attributedPlaceholder = NSAttributedString (string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
-        //fuckingSearchBar.layer.borderColor = UIColor.whiteColor().CGColor
-        //fuckingSearchBar.layer.borderWidth = 0.7
-        //fuckingSearchBar.textAlignment = NSTextAlignment.Center
-        //fuckingSearchBar.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        fuckingSearchBar.textColor = UIColor.grayColor()
+
+        let font = UIFont(name: ".HelveticaNeueInterface-Regular", size: 14)!
+
+        //fuckingSearchBar.attributedPlaceholder = NSAttributedString(string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor(), NSFontAttributeName: font])
+
+        fuckingSearchBar.textAlignment = NSTextAlignment.Center
+        fuckingSearchBar.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
         
         fuckingSearchBar.alpha = 0
 

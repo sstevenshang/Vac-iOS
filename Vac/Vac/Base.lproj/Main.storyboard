@@ -41,9 +41,6 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="yes" returnKeyType="search"/>
-                            <connections>
-                                <outlet property="delegate" destination="BYZ-38-t0r" id="s18-PE-286"/>
-                            </connections>
                         </textField>
                     </navigationItem>
                     <connections>

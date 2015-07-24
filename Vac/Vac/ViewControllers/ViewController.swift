@@ -20,17 +20,15 @@ class ViewController: UIViewController {
         
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
         
-        //searchBar.layer.cornerRadius = 15.0
-        //searchBar.layer.borderColor = UIColor.whiteColor().CGColor
-        //searchBar.layer.borderWidth = 0.7
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
+        
+        println(searchBar.frame.height)
+        println(searchBar.frame.width)
+        println(searchBar.font)
         
     }
 
@@ -47,6 +45,6 @@ class ViewController: UIViewController {
         destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
     }
     
-    
-    
+
+
 }

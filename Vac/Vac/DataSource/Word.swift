@@ -6,20 +6,4 @@
 //  Copyright (c) 2015 Steven Shang. All rights reserved.
 //
 
-import UIKit
-
-class Word {
-    
-    let word: String
-    let defiantion: String?
-    
-    init(word: String, defination: String?) {
-        
-        self.word = word
-        self.defiantion = defination
-        
-    }
-    
-}
-
-
+import Foundation

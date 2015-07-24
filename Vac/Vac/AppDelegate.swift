@@ -16,11 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let APIKey: String = "df9a5855e757622d54006058d830982c71a930d8b23d3cbd5"
-        
-        HNKLookup.sharedInstanceWithAPIKey(APIKey)
-        
+
+        //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
         return true
     }
 
