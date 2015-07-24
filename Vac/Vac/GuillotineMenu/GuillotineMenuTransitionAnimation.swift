@@ -27,7 +27,7 @@ class GuillotineTransitionAnimation: NSObject {
     enum Mode { case Presentation, Dismissal }
     
     private let mode: Mode
-    private let duration = 0.6
+    private let duration = 0.5
     private let vectorDY: CGFloat = 1500
     private let vectorDx: CGFloat = 0.0
     private let initialMenuRotationAngle: CGFloat = -90

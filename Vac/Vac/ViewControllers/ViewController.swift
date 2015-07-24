@@ -26,16 +26,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println(searchBar.frame.height)
-        println(searchBar.frame.width)
-        println(searchBar.font)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Guillotine Menu
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
