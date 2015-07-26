@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DictionaryHelper: NSObject {
     
@@ -25,23 +26,31 @@ class DictionaryHelper: NSObject {
     
     let session = NSURLSession.sharedSession()
     
-    func callSession(searchKey: String, completionBlock: (NSDictionary -> Void)) -> Void{
+    func callSession(searchKey: String, completionBlock: ([String] -> Void)) -> Void{
 
         var url = self.createURL(searchKey)
         
         let dataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
             
+            var wordsFound: [String] = []
+
             if error != nil {
                 
                 NSLog(error.localizedDescription)
                 
             } else {
                 
-                NSLog(NSString(data: data, encoding: NSUTF8StringEncoding)! as String)
-                //let result = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String:String]
-                //completionBlock(result!)
+                let json = JSON(data: data)
+                let anyWord = json["searchResults"]
+                
+                for (index: String, subJson: JSON) in anyWord {
+                    
+                    wordsFound.append(subJson["word"].stringValue)
+                }
             }
-            
+                        
+            completionBlock(wordsFound)
+
         })
         
         dataTask.resume()
