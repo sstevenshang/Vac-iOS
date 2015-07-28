@@ -7,32 +7,50 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class DictionaryHelper: NSObject {
     
     let APIKey: String = "df9a5855e757622d54006058d830982c71a930d8b23d3cbd5"
     
-    func createURL(key: String) -> NSURL{
+    let session = NSURLSession.sharedSession()
+    
+    // SEARCH
+    
+    func createURL(key: String, type: String) -> NSURL{
         
-        var URL = "http://api.wordnik.com:80/v4/words.json/search/\(key)*?caseSensitive=false&minCorpusCount=5&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=-1&skip=0&limit=10&api_key=\(APIKey)"
+        let newKey: String = key.stringByReplacingOccurrencesOfString(" ", withString: "_")
         
-        print("created url: ")
+        var URL: String!
+        
+        switch type {
+        
+            case "words":
+            
+                URL = "http://api.wordnik.com/v4/words.json/search/\(newKey)*?caseSensitive=true&minCorpusCount=5&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=-1&skip=0&limit=10&api_key=\(APIKey)"
+            
+            case "defination":
+            
+                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/definitions?limit=3&includeRelated=true&sourceDictionaries=wiktionary&useCanonical=true&includeTags=false&api_key=\(APIKey)"
+            
+            case "synonym":
+            
+                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/relatedWords?useCanonical=true&relationshipTypes=synonym&limitPerRelationshipType=5&api_key=\(APIKey)"
+            
+            default:
+            
+                URL = ""
+        }
+        
         println(URL)
-        
         return NSURL(string: URL)!
         
     }
     
-    let session = NSURLSession.sharedSession()
-    
-    func callSession(searchKey: String, completionBlock: ([String] -> Void)) -> Void{
-
-        var url = self.createURL(searchKey)
+    func callSession(searchKey: String, type: String, completionBlock: (NSData -> Void)) -> Void{
+        
+        var url = self.createURL(searchKey, type: type)
         
         let dataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-            
-            var wordsFound: [String] = []
 
             if error != nil {
                 
@@ -40,19 +58,12 @@ class DictionaryHelper: NSObject {
                 
             } else {
                 
-                let json = JSON(data: data)
-                let anyWord = json["searchResults"]
-                
-                for (index: String, subJson: JSON) in anyWord {
-                    
-                    wordsFound.append(subJson["word"].stringValue)
-                }
+                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                completionBlock(data)
             }
-                        
-            completionBlock(wordsFound)
-
         })
         
         dataTask.resume()
     }
+    
 }
