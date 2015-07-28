@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		925A27C13CC334030737485B /* Pods_Vac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286507F81ABADE52DA6E5C52 /* Pods_Vac.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A44D16231B66AEF100B0A7F5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D16221B66AEF100B0A7F5 /* Word.swift */; };
+		A44D16251B680CCF00B0A7F5 /* WordPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D16241B680CCF00B0A7F5 /* WordPageView.swift */; };
 		A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686C951B5DF3A100403429 /* AppDelegate.swift */; };
 		A4686C9B1B5DF3A100403429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4686C991B5DF3A100403429 /* Main.storyboard */; };
 		A4686C9D1B5DF3A100403429 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4686C9C1B5DF3A100403429 /* Images.xcassets */; };
@@ -40,6 +41,7 @@
 		262C56149BDADC036B632800 /* Pods-Vac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vac/Pods-Vac.debug.xcconfig"; sourceTree = "<group>"; };
 		286507F81ABADE52DA6E5C52 /* Pods_Vac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44D16221B66AEF100B0A7F5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		A44D16241B680CCF00B0A7F5 /* WordPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPageView.swift; sourceTree = "<group>"; };
 		A4686C901B5DF3A100403429 /* Vac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4686C941B5DF3A100403429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4686C951B5DF3A100403429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F102481B63144400B9B5AF /* WordCell.swift */,
+				A44D16241B680CCF00B0A7F5 /* WordPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */,
 				A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */,
 				A4F102491B63144400B9B5AF /* WordCell.swift in Sources */,
+				A44D16251B680CCF00B0A7F5 /* WordPageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
