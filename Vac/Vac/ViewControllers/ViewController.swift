@@ -41,11 +41,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var exampleLabel: UILabel!
     
+    @IBOutlet weak var synonymsTitleLabel: UILabel!
 
     @IBOutlet weak var topConstraintOfSecondPartOfSpeech: NSLayoutConstraint!
     
     @IBOutlet weak var topConstraintOfThirdPartOfSpeech: NSLayoutConstraint!
     
+    @IBOutlet weak var topConstraintOfExample: NSLayoutConstraint!
+
     func getDefinition(word: String) {
         
         wordLabel.text = word
@@ -68,37 +71,44 @@ class ViewController: UIViewController {
             println(partOfSpeech)
             println(definitions)
             
-        })
-        
-        dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
-            
-            let json = JSON(data: data)
-            let anyWord = json[0]
-            let anyWords = anyWord["words"]
-            
-            for (index: String, subJson: JSON) in anyWords {
+            self.dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
                 
-                synonyms.append(subJson.stringValue)
-            }
-            
-            println(synonyms)
-            
+                let json = JSON(data: data)
+                let anyWord = json[0]
+                let anyWords = anyWord["words"]
+                
+                for (index: String, subJson: JSON) in anyWords {
+                    
+                    synonyms.append(subJson.stringValue)
+                }
+                
+                println(synonyms)
+                
+                self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
+                    
+                    let json = JSON(data: data)
+                    example = json["text"].stringValue
+                    
+                    example = self.modifyExample(example)
+                    
+                    println(example)
+                    
+                    self.handleDefinitionView(partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
+                    
+                })
+            })
         })
+    }
+
+    func modifyExample(example: String) -> String {
         
-        dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
-            
-            let json = JSON(data: data)
-            example = json["text"].stringValue
-            
-            println(example)
-            
-        })
+        var newExample = example.stringByReplacingOccurrencesOfString("™", withString: "")
+        var newNewExample = newExample.stringByReplacingOccurrencesOfString("˜", withString: "")
+        var newNewNewExample = newNewExample.stringByReplacingOccurrencesOfString("*", withString: "")
         
-        
-        
+        return newNewNewExample
     }
     
-
     func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -139,9 +149,17 @@ class ViewController: UIViewController {
 
             }
             
-            var synonymsString: String = ", ".join(synonyms)
-            
-            self.synonymsLabel.text = synonymsString
+            if synonyms == [] {
+                
+                self.synonymsLabel.hidden = true
+                self.synonymsTitleLabel.hidden = true
+                self.topConstraintOfExample.constant = -45
+                
+            } else {
+                
+                var synonymsString: String = ", ".join(synonyms)
+                self.synonymsLabel.text = synonymsString
+            }
             
             self.exampleLabel.text = example
             
@@ -162,6 +180,8 @@ class ViewController: UIViewController {
         resultTableView.hidden = true
         definitionView.hidden = true
         
+        searchBar.delegate = self
+        
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search!", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
         
         searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
@@ -177,6 +197,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
+    
     
     // MARK: Search Function
     
@@ -233,7 +254,6 @@ class ViewController: UIViewController {
     }
     
     
-    
 }
 
 // MARK: Table View
@@ -276,13 +296,22 @@ extension ViewController: UITableViewDelegate {
         
         getDefinition(wordSelected)
         
+        searchBar.resignFirstResponder()
+        
         resultTableView.hidden = true
     }
     
 }
     
+extension ViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(searchBar: UITextField) -> Bool{
+        
+        searchBar.resignFirstResponder()
+        return true
+        
+    }
+}
 
 
 
