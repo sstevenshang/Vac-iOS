@@ -28,13 +28,18 @@ class DictionaryHelper: NSObject {
             
                 URL = "http://api.wordnik.com/v4/words.json/search/\(newKey)*?caseSensitive=true&minCorpusCount=5&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=-1&skip=0&limit=10&api_key=\(APIKey)"
             
-            case "defination":
+            case "definition":
             
-                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/definitions?limit=3&includeRelated=true&sourceDictionaries=wiktionary&useCanonical=true&includeTags=false&api_key=\(APIKey)"
+                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/definitions?limit=3&includeRelated=true&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=\(APIKey)"
             
-            case "synonym":
-            
+            case "synonyms":
+                
                 URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/relatedWords?useCanonical=true&relationshipTypes=synonym&limitPerRelationshipType=5&api_key=\(APIKey)"
+
+            
+            case "example":
+            
+                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/topExample?useCanonical=false&api_key=\(APIKey)"
             
             default:
             
@@ -58,7 +63,7 @@ class DictionaryHelper: NSObject {
                 
             } else {
                 
-                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                //println(NSString(data: data, encoding: NSUTF8StringEncoding))
                 completionBlock(data)
             }
         })

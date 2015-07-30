@@ -17,10 +17,150 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
     
+    // MARK: Word Definition View
+    
+    @IBOutlet weak var definitionView: UIScrollView!
+    
+    @IBOutlet weak var wordLabel: UILabel!
+    
+    @IBOutlet weak var pageSaveButton: UIButton!
+    
+    @IBOutlet weak var firstPartOfSpeech: UILabel!
+    
+    @IBOutlet weak var firstDefinition: UILabel!
+    
+    @IBOutlet weak var secondPartOfSpeech: UILabel!
+    
+    @IBOutlet weak var secondDefinition: UILabel!
+    
+    @IBOutlet weak var thirdPartOfSeech: UILabel!
+    
+    @IBOutlet weak var thirdDefinition: UILabel!
+    
+    @IBOutlet weak var synonymsLabel: UILabel!
+    
+    @IBOutlet weak var exampleLabel: UILabel!
+    
+
+    @IBOutlet weak var topConstraintOfSecondPartOfSpeech: NSLayoutConstraint!
+    
+    @IBOutlet weak var topConstraintOfThirdPartOfSpeech: NSLayoutConstraint!
+    
+    func getDefinition(word: String) {
+        
+        wordLabel.text = word
+        
+        var partOfSpeech: [String] = []
+        var definitions: [String] = []
+        var synonyms: [String] = []
+        var example: String = ""
+        
+        dictionary.callSession(word, type: "definition", completionBlock: {(data: NSData) -> Void in
+            
+            let json = JSON(data: data)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                partOfSpeech.append(subJson["partOfSpeech"].stringValue)
+                definitions.append(subJson["text"].stringValue)
+            }
+            
+            println(partOfSpeech)
+            println(definitions)
+            
+        })
+        
+        dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
+            
+            let json = JSON(data: data)
+            let anyWord = json[0]
+            let anyWords = anyWord["words"]
+            
+            for (index: String, subJson: JSON) in anyWords {
+                
+                synonyms.append(subJson.stringValue)
+            }
+            
+            println(synonyms)
+            
+        })
+        
+        dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
+            
+            let json = JSON(data: data)
+            example = json["text"].stringValue
+            
+            println(example)
+            
+        })
+        
+        
+        
+    }
+    
+
+    func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+
+            var numberOfDefinitions = partOfSpeech.count
+            
+            println(numberOfDefinitions)
+            
+            self.firstPartOfSpeech?.text = partOfSpeech[0]
+            self.firstDefinition?.text = definitions[0]
+        
+            switch numberOfDefinitions{
+                
+            case 1:
+                
+                self.topConstraintOfSecondPartOfSpeech.constant = -105
+                
+                self.secondPartOfSpeech.hidden = true
+                self.secondDefinition.hidden = true
+                self.thirdDefinition.hidden = true
+                self.thirdPartOfSeech.hidden = true
+                
+            case 2:
+                
+                self.topConstraintOfThirdPartOfSpeech.constant = -45
+                
+                self.thirdDefinition.hidden = true
+                self.thirdPartOfSeech.hidden = true
+                self.secondPartOfSpeech?.text = partOfSpeech[1]
+                self.secondDefinition?.text = definitions[1]
+                
+            default:
+                
+                self.secondPartOfSpeech?.text = partOfSpeech[1]
+                self.secondDefinition?.text = definitions[1]
+                self.thirdPartOfSeech?.text = partOfSpeech[2]
+                self.thirdDefinition?.text = definitions[2]
+
+            }
+            
+            var synonymsString: String = ", ".join(synonyms)
+            
+            self.synonymsLabel.text = synonymsString
+            
+            self.exampleLabel.text = example
+            
+            self.definitionView.hidden = false
+            
+            println("definition view handled")
+            
+        })
+
+    }
+    
+    
+    // MARK: Life Cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         resultTableView.hidden = true
+        definitionView.hidden = true
         
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search!", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
         
@@ -38,7 +178,7 @@ class ViewController: UIViewController {
         
     }
     
-    // Search
+    // MARK: Search Function
     
     let dictionary = DictionaryHelper()
     var searchResult: [String]?
@@ -47,6 +187,8 @@ class ViewController: UIViewController {
         
         if !searchBar.text.isEmpty{
             
+            definitionView.hidden = true
+
             let searchWord = searchBar.text
             
             dictionary.callSession(searchWord, type: "words", completionBlock: { (data: NSData) -> Void in
@@ -76,7 +218,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Guillotine Menu
+    // MARK: Guillotine Menu
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -89,7 +231,12 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    
+    
 }
+
+// MARK: Table View
 
 extension ViewController: UITableViewDataSource {
     
@@ -113,11 +260,34 @@ extension ViewController: UITableViewDataSource {
             
             wordCell.wordLabel.text = result
             println(result)
-
         }
         
         return wordCell
     }
+}
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let wordSelected = searchResult![indexPath.row]
+        
+        searchBar.text = wordSelected
+        
+        getDefinition(wordSelected)
+        
+        resultTableView.hidden = true
+    }
     
 }
+    
+    
+    
+
+
+
+
+
+
+
 
