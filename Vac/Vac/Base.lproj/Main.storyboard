@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-Ru-zfd" userLabel="Content View" customClass="DefinitionView" customModule="Vac" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="489.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lso-7M-Hcu">
                                                 <rect key="frame" x="40" y="40" width="58" height="30"/>
@@ -58,13 +58,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-zf-Uva">
-                                                <rect key="frame" x="40" y="145.5" width="37" height="20.5"/>
+                                                <rect key="frame" x="40" y="146" width="37" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="0.75" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a finite string which is not a command or operator." lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-KA-zdJ">
-                                                <rect key="frame" x="40" y="171" width="520" height="20.5"/>
+                                                <rect key="frame" x="40" y="171.5" width="520" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -101,13 +101,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmi-LF-LJr">
-                                                <rect key="frame" x="40" y="381" width="67" height="20.5"/>
+                                                <rect key="frame" x="40" y="380.5" width="67" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="there is an important and very common use of the word ˜word™ that lexicographers and the rest of us use frequently." lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9B-Xj-R99">
-                                                <rect key="frame" x="40" y="408.5" width="520" height="41"/>
+                                                <rect key="frame" x="40" y="408" width="520" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -259,17 +259,20 @@
                     <connections>
                         <outlet property="definitionView" destination="Mjj-dX-HiI" id="s3U-8w-EV3"/>
                         <outlet property="exampleLabel" destination="C9B-Xj-R99" id="ges-sK-dIm"/>
+                        <outlet property="exampleTitleLabel" destination="Wmi-LF-LJr" id="zda-Jj-32O"/>
                         <outlet property="firstDefinition" destination="KCy-E1-xSg" id="Zs2-oZ-6vP"/>
+                        <outlet property="firstPartOfSpeech" destination="PRA-af-Fx5" id="BTf-7b-Ber"/>
                         <outlet property="menuButton" destination="SCv-Gb-28K" id="Una-rT-0lU"/>
                         <outlet property="pageSaveButton" destination="XsJ-K2-Ak9" id="XZN-FZ-2mO"/>
                         <outlet property="resultTableView" destination="nkA-kd-n1Y" id="7ND-bR-RBI"/>
                         <outlet property="searchBar" destination="wgg-ti-vW0" id="Hyu-yb-8zC"/>
                         <outlet property="secondDefinition" destination="FbP-KA-zdJ" id="ty0-Wn-EOr"/>
+                        <outlet property="secondPartOfSpeech" destination="KV0-zf-Uva" id="xaV-UV-j3u"/>
                         <outlet property="synonymsLabel" destination="WBz-JH-0rj" id="2Qe-Oo-OUz"/>
                         <outlet property="synonymsTitleLabel" destination="7Ev-k6-eLi" id="6Sl-Be-5cj"/>
                         <outlet property="thirdDefinition" destination="MzS-YB-1e4" id="7kn-ct-q5O"/>
                         <outlet property="thirdPartOfSeech" destination="35e-j3-lVc" id="rGI-if-oj0"/>
-                        <outlet property="topConstraintOfExample" destination="jDw-7g-cPw" id="K9K-ew-KOL"/>
+                        <outlet property="topConstraintOfExampleTitle" destination="jDw-7g-cPw" id="sT0-6o-cJe"/>
                         <outlet property="topConstraintOfSecondPartOfSpeech" destination="eWT-jE-AXq" id="Bfg-mn-Al3"/>
                         <outlet property="topConstraintOfThirdPartOfSpeech" destination="6gU-E4-Flw" id="vVc-Q5-Qn8"/>
                         <outlet property="wordLabel" destination="lso-7M-Hcu" id="QyS-OK-r53"/>

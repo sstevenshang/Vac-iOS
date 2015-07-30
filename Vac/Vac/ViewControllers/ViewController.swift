@@ -43,141 +43,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var synonymsTitleLabel: UILabel!
 
+    @IBOutlet weak var exampleTitleLabel: UILabel!
+    
     @IBOutlet weak var topConstraintOfSecondPartOfSpeech: NSLayoutConstraint!
     
     @IBOutlet weak var topConstraintOfThirdPartOfSpeech: NSLayoutConstraint!
     
-    @IBOutlet weak var topConstraintOfExample: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintOfExampleTitle: NSLayoutConstraint!
 
-    func getDefinition(word: String) {
-        
-        wordLabel.text = word
-        
-        var partOfSpeech: [String] = []
-        var definitions: [String] = []
-        var synonyms: [String] = []
-        var example: String = ""
-        
-        dictionary.callSession(word, type: "definition", completionBlock: {(data: NSData) -> Void in
-            
-            let json = JSON(data: data)
-            
-            for (index: String, subJson: JSON) in json {
-                
-                if subJson["partOfSpeech"].stringValue != ""{
-                    
-                    partOfSpeech.append(subJson["partOfSpeech"].stringValue)
-                }
-                
-                definitions.append(subJson["text"].stringValue)
-            }
-            
-            println(partOfSpeech)
-            println(definitions)
-            
-            self.dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
-                
-                let json = JSON(data: data)
-                let anyWord = json[0]
-                let anyWords = anyWord["words"]
-                
-                for (index: String, subJson: JSON) in anyWords {
-                    
-                    synonyms.append(subJson.stringValue)
-                }
-                
-                println(synonyms)
-                
-                self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
-                    
-                    let json = JSON(data: data)
-                    example = json["text"].stringValue
-                    
-                    example = self.modifyExample(example)
-                    
-                    println(example)
-                    
-                    self.handleDefinitionView(partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
-                    
-                })
-            })
-        })
-    }
 
-    func modifyExample(example: String) -> String {
-        
-        var newExample = example.stringByReplacingOccurrencesOfString("™", withString: "")
-        var newNewExample = newExample.stringByReplacingOccurrencesOfString("˜", withString: "")
-        var newNewNewExample = newNewExample.stringByReplacingOccurrencesOfString("*", withString: "")
-        var newNewNewNewExample = newNewNewExample.stringByReplacingOccurrencesOfString("_", withString: "")
-        
-        return newNewNewNewExample
-        
-    }
-    
-    func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-
-            var numberOfDefinitions = partOfSpeech.count
-            
-            println(numberOfDefinitions)
-            
-            self.firstPartOfSpeech?.text = partOfSpeech[0]
-            self.firstDefinition?.text = definitions[0]
-        
-            switch numberOfDefinitions{
-                
-            case 1:
-                
-                self.topConstraintOfSecondPartOfSpeech.constant = -105
-                
-                self.secondPartOfSpeech.hidden = true
-                self.secondDefinition.hidden = true
-                self.thirdDefinition.hidden = true
-                self.thirdPartOfSeech.hidden = true
-                
-            case 2:
-                
-                self.topConstraintOfThirdPartOfSpeech.constant = -45
-                
-                self.thirdDefinition.hidden = true
-                self.thirdPartOfSeech.hidden = true
-                self.secondPartOfSpeech?.text = partOfSpeech[1]
-                self.secondDefinition?.text = definitions[1]
-                
-            default:
-                
-                self.secondPartOfSpeech?.text = partOfSpeech[1]
-                self.secondDefinition?.text = definitions[1]
-                self.thirdPartOfSeech?.text = partOfSpeech[2]
-                self.thirdDefinition?.text = definitions[2]
-
-            }
-            
-            if synonyms.count != 0 {
-                
-                var synonymsString: String = ", ".join(synonyms)
-                self.synonymsLabel.text = synonymsString
-                
-            } else {
-                
-                self.synonymsLabel.hidden = true
-                self.synonymsTitleLabel.hidden = true
-                self.topConstraintOfExample.constant = -45
-                
-            }
-            
-            self.exampleLabel.text = example
-            
-            self.definitionView.hidden = false
-            
-            println("definition view handled")
-            
-        })
-
-    }
-    
     
     // MARK: Life Cycle
     
@@ -205,7 +79,6 @@ class ViewController: UIViewController {
         
     }
     
-    
     // MARK: Search Function
     
     let dictionary = DictionaryHelper()
@@ -216,11 +89,11 @@ class ViewController: UIViewController {
         if !searchBar.text.isEmpty{
             
             definitionView.hidden = true
-
+            
             let searchWord = searchBar.text
             
             dictionary.callSession(searchWord, type: "words", completionBlock: { (data: NSData) -> Void in
-
+                
                 var wordsFound: [String] = []
                 
                 let json = JSON(data: data)
@@ -246,6 +119,163 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: Show Definition
+    
+    func getDefinition(word: String) {
+        
+        wordLabel.text = word
+        
+        var partOfSpeech: [String] = []
+        var definitions: [String] = []
+        var synonyms: [String] = []
+        var example: String = ""
+        
+        dictionary.callSession(word, type: "definition", completionBlock: {(data: NSData) -> Void in
+            
+            let json = JSON(data: data)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                if subJson["partOfSpeech"].stringValue != ""{
+                    
+                    partOfSpeech.append(subJson["partOfSpeech"].stringValue)
+                }
+                
+                definitions.append(subJson["text"].stringValue)
+            }
+            
+            self.dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
+                
+                let json = JSON(data: data)
+                let anyWord = json[0]
+                let anyWords = anyWord["words"]
+                
+                for (index: String, subJson: JSON) in anyWords {
+                    
+                    synonyms.append(subJson.stringValue)
+                }
+                
+                self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
+                    
+                    let json = JSON(data: data)
+                    let anyJson = json["examples"]
+                    let anyAnyJson = anyJson[0]
+                    
+                    example = anyAnyJson["text"].stringValue
+                    
+                    self.handleDefinitionView(partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
+                    
+                })
+            })
+        })
+    }
+    
+    func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) -> Void {
+        
+        println(partOfSpeech)
+        println(definitions)
+        println(synonyms)
+        println(example)
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            
+            self.firstPartOfSpeech.text = partOfSpeech[0]
+            self.firstDefinition.text = definitions[0]
+            
+            let numberOfDefinitions = partOfSpeech.count
+            
+            println(numberOfDefinitions)
+            
+            switch numberOfDefinitions {
+                
+            case 1:
+                
+                self.hideSecondSection(true)
+                self.hideThirdSection(true)
+                self.topConstraintOfSecondPartOfSpeech.constant = -107
+                // default: 15
+                
+            case 2:
+                
+                self.secondPartOfSpeech.text = partOfSpeech[1]
+                self.secondDefinition.text = definitions[1]
+                
+                self.hideSecondSection(false)
+                self.hideThirdSection(true)
+                self.topConstraintOfThirdPartOfSpeech.constant = -46
+                // default: 15
+                
+            case 3:
+                
+                self.secondPartOfSpeech.text = partOfSpeech[1]
+                self.secondDefinition.text = definitions[1]
+                self.thirdPartOfSeech.text = partOfSpeech[2]
+                self.thirdDefinition.text = definitions[2]
+                
+                self.hideSecondSection(false)
+                self.hideThirdSection(false)
+                
+            default:
+                
+                println("oops")
+                
+            }
+            
+            if synonyms.count != 0 {
+
+                var synonymsString: String = ", ".join(synonyms)
+                self.synonymsLabel.text = synonymsString
+                
+                self.hideSynonyms(false)
+                
+            } else {
+                
+                self.hideSynonyms(true)
+                self.topConstraintOfExampleTitle.constant = -48
+                // default: 20
+
+            }
+            
+            let modifiedExample = self.modifyExample(example)
+            
+            self.exampleLabel.text = modifiedExample
+            
+            self.definitionView.hidden = false
+            println("definition view handled")
+
+        })
+        
+    }
+    
+    func modifyExample(example: String) -> String {
+        
+        let newExample: String = example.stringByReplacingOccurrencesOfString("*", withString: "")
+        let newNewExample: String = example.stringByReplacingOccurrencesOfString("_", withString: "")
+        
+        return newNewExample
+    }
+    
+    func hideSecondSection(show: Bool) -> Void {
+        
+        self.secondPartOfSpeech.hidden = show
+        self.secondDefinition.hidden = show
+    }
+    
+    func hideThirdSection(show: Bool) -> Void {
+        
+        self.thirdDefinition.hidden = show
+        self.thirdPartOfSeech.hidden = show
+    }
+    
+    func hideSynonyms(show: Bool) -> Void {
+        
+        self.synonymsLabel.hidden = show
+        self.synonymsTitleLabel.hidden = show
+    }
+    
+    
+
+    
     // MARK: Guillotine Menu
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -263,7 +293,7 @@ class ViewController: UIViewController {
     
 }
 
-// MARK: Table View
+// MARK: TableView
 
 extension ViewController: UITableViewDataSource {
     
@@ -297,6 +327,10 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        self.topConstraintOfExampleTitle.constant = 20
+        self.topConstraintOfThirdPartOfSpeech.constant = 15
+        self.topConstraintOfSecondPartOfSpeech.constant = 15
+        
         let wordSelected = searchResult![indexPath.row]
         
         searchBar.text = wordSelected
@@ -309,7 +343,9 @@ extension ViewController: UITableViewDelegate {
     }
     
 }
-    
+
+// MARK: TextField
+
 extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(searchBar: UITextField) -> Bool{
