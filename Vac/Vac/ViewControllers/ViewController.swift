@@ -64,7 +64,11 @@ class ViewController: UIViewController {
             
             for (index: String, subJson: JSON) in json {
                 
-                partOfSpeech.append(subJson["partOfSpeech"].stringValue)
+                if subJson["partOfSpeech"].stringValue != ""{
+                    
+                    partOfSpeech.append(subJson["partOfSpeech"].stringValue)
+                }
+                
                 definitions.append(subJson["text"].stringValue)
             }
             
@@ -105,8 +109,10 @@ class ViewController: UIViewController {
         var newExample = example.stringByReplacingOccurrencesOfString("™", withString: "")
         var newNewExample = newExample.stringByReplacingOccurrencesOfString("˜", withString: "")
         var newNewNewExample = newNewExample.stringByReplacingOccurrencesOfString("*", withString: "")
+        var newNewNewNewExample = newNewNewExample.stringByReplacingOccurrencesOfString("_", withString: "")
         
-        return newNewNewExample
+        return newNewNewNewExample
+        
     }
     
     func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
@@ -149,16 +155,17 @@ class ViewController: UIViewController {
 
             }
             
-            if synonyms == [] {
+            if synonyms.count != 0 {
+                
+                var synonymsString: String = ", ".join(synonyms)
+                self.synonymsLabel.text = synonymsString
+                
+            } else {
                 
                 self.synonymsLabel.hidden = true
                 self.synonymsTitleLabel.hidden = true
                 self.topConstraintOfExample.constant = -45
                 
-            } else {
-                
-                var synonymsString: String = ", ".join(synonyms)
-                self.synonymsLabel.text = synonymsString
             }
             
             self.exampleLabel.text = example
