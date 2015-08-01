@@ -23,8 +23,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var wordLabel: UILabel!
     
-    @IBOutlet weak var pageSaveButton: UIButton!
-    
     @IBOutlet weak var firstPartOfSpeech: UILabel!
     
     @IBOutlet weak var firstDefinition: UILabel!
@@ -51,7 +49,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var topConstraintOfExampleTitle: NSLayoutConstraint!
 
+    @IBOutlet weak var saveButton: UIButton!
 
+    
     
     // MARK: Life Cycle
     
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
     
     // MARK: Show Definition
     
-    func getDefinition(word: String) {
+    func getDefinition(word: String, completionHandler: (([String], definitons: [String], synonyms: [String], example: String) -> Void)) {
         
         wordLabel.text = word
         
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
                     
                     example = anyAnyJson["text"].stringValue
                     
-                    self.handleDefinitionView(partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
+                    completionHandler(partOfSpeech, definitons: definitions, synonyms: synonyms, example: example)
                     
                 })
             })
@@ -273,7 +273,15 @@ class ViewController: UIViewController {
         self.synonymsTitleLabel.hidden = show
     }
     
+    // MARK: Handle User Data
     
+    func saveWord(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
+        
+     //   let word = Word()
+        
+        
+        
+    }
 
     
     // MARK: Guillotine Menu
@@ -335,7 +343,7 @@ extension ViewController: UITableViewDelegate {
         
         searchBar.text = wordSelected
         
-        getDefinition(wordSelected)
+        getDefinition(wordSelected, completionHandler: self.handleDefinitionView)
         
         searchBar.resignFirstResponder()
         

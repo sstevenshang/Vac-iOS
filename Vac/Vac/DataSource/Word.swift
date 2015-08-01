@@ -16,9 +16,9 @@ class Word: NSObject {
     
     let synonyms: [String]
     
-    let examples: [String]
+    let examples: String
     
-    init(word: String, definition: [String:String], synonyms: [String], examples: [String]) {
+    init(word: String, definition: [String:String], synonyms: [String], examples: String) {
         
         self.word = word
         self.definition = definition
@@ -26,5 +26,7 @@ class Word: NSObject {
         self.examples = examples
         
     }
+    
+    
     
 }

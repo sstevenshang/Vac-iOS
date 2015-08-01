@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>389C5816524B53AEDB80D81018D482EF</key>
+		<key>70A44233EA153AAFF51F940869043A47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8CBF801415CD394145492148B107E0B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9661560BAD86239F3396E54AE90A2540</key>
 		<dict>
 			<key>primary</key>
 			<true/>
