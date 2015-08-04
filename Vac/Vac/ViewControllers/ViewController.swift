@@ -51,8 +51,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
 
-    
-    
     // MARK: Life Cycle
     
     override func viewWillAppear(animated: Bool) {
@@ -62,8 +60,14 @@ class ViewController: UIViewController {
         definitionView.hidden = true
         
         searchBar.delegate = self
-        
+        searchBar.layer.cornerRadius = 15.0
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search!", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
+        
+        let clearButton = UIButton(frame: CGRectMake(0, 0, 15, 15))
+        clearButton.setImage(UIImage(named: "ClearButton")!, forState: UIControlState.Normal)
+        searchBar.rightView = clearButton
+        clearButton.addTarget(self, action: "clear:", forControlEvents: UIControlEvents.TouchUpInside)
+        searchBar.rightViewMode = UITextFieldViewMode.WhileEditing
         
         searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
@@ -80,6 +84,12 @@ class ViewController: UIViewController {
     }
     
     // MARK: Search Function
+    
+    func clear(clearButton: UIButton) {
+        searchBar.text = ""
+        resultTableView.hidden = true
+        definitionView.hidden = true
+    }
     
     let dictionary = DictionaryHelper()
     var searchResult: [String]?
@@ -119,7 +129,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: Show Definition
+    // MARK: Get Definition
     
     func getDefinition(word: String, completionHandler: (([String], definitons: [String], synonyms: [String], example: String) -> Void)) {
         
@@ -139,9 +149,10 @@ class ViewController: UIViewController {
                 if subJson["partOfSpeech"].stringValue != ""{
                     
                     partOfSpeech.append(subJson["partOfSpeech"].stringValue)
+                    
+                    let definition: String = self.modifyDefinition(subJson["text"].stringValue)
+                    definitions.append(definition)
                 }
-                
-                definitions.append(subJson["text"].stringValue)
             }
             
             self.dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
@@ -152,7 +163,8 @@ class ViewController: UIViewController {
                 
                 for (index: String, subJson: JSON) in anyWords {
                     
-                    synonyms.append(subJson.stringValue)
+                    let synonym: String = self.modifySynonym(subJson.stringValue)
+                    synonyms.append(synonym)
                 }
                 
                 self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
@@ -161,7 +173,9 @@ class ViewController: UIViewController {
                     let anyJson = json["examples"]
                     let anyAnyJson = anyJson[0]
                     
-                    example = anyAnyJson["text"].stringValue
+                    
+                    let aExample: String = self.modifyExample(anyAnyJson["text"].stringValue)
+                    example = aExample
                     
                     completionHandler(partOfSpeech, definitons: definitions, synonyms: synonyms, example: example)
                     
@@ -169,6 +183,40 @@ class ViewController: UIViewController {
             })
         })
     }
+    
+    func modifyExample(example: String) -> String {
+        
+        var newExample: String = example.stringByReplacingOccurrencesOfString("*", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("_", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("~", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("™", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("-- ", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("　　 ", withString: "")
+        newExample = newExample.stringByReplacingOccurrencesOfString("�", withString: "")
+        
+        return newExample
+    }
+    
+    func modifySynonym(synonym: String) -> String {
+        
+        var newSynonym: String = synonym.stringByReplacingOccurrencesOfString("<er>", withString: "")
+        newSynonym = newSynonym.stringByReplacingOccurrencesOfString("</er", withString: "")
+        
+        return newSynonym
+    }
+    
+    func modifyDefinition(definition: String) -> String {
+        
+        var newDefinition: String = definition.stringByReplacingOccurrencesOfString("  ", withString: ": ")
+        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(":: ", withString: ": ")
+        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(": (", withString: " (")
+        newDefinition = newDefinition.stringByReplacingOccurrencesOfString("( ", withString: "(")
+        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(".: ", withString: ".")
+        
+        return newDefinition
+    }
+    
+    // MARK: Show Definition
     
     func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) -> Void {
         
@@ -236,23 +284,22 @@ class ViewController: UIViewController {
 
             }
             
-            let modifiedExample = self.modifyExample(example)
-            
-            self.exampleLabel.text = modifiedExample
+            if example != "" {
+                
+                self.hideExample(false)
+                self.exampleLabel.text = example
+                
+            } else {
+                
+                self.hideExample(true)
+            }
             
             self.definitionView.hidden = false
+            
             println("definition view handled")
-
+            
         })
         
-    }
-    
-    func modifyExample(example: String) -> String {
-        
-        let newExample: String = example.stringByReplacingOccurrencesOfString("*", withString: "")
-        let newNewExample: String = example.stringByReplacingOccurrencesOfString("_", withString: "")
-        
-        return newNewExample
     }
     
     func hideSecondSection(show: Bool) -> Void {
@@ -271,6 +318,12 @@ class ViewController: UIViewController {
         
         self.synonymsLabel.hidden = show
         self.synonymsTitleLabel.hidden = show
+    }
+    
+    func hideExample(show: Bool) -> Void {
+        
+        self.exampleTitleLabel.hidden = show
+        self.exampleLabel.hidden = show
     }
     
     // MARK: Handle User Data
@@ -363,9 +416,6 @@ extension ViewController: UITextFieldDelegate {
         
     }
 }
-
-
-
 
 
 

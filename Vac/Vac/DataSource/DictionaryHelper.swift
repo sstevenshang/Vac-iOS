@@ -39,7 +39,7 @@ class DictionaryHelper: NSObject {
             
             case "example":
             
-                URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/topExample?useCanonical=false&api_key=\(APIKey)"
+                //URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/topExample?useCanonical=false&api_key=\(APIKey)"
                 URL = "http://api.wordnik.com:80/v4/word.json/\(newKey)/examples?includeDuplicates=false&useCanonical=true&skip=0&limit=1&api_key=\(APIKey)"
             
             default:
