@@ -7,26 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Word: NSObject {
+class Word: Object {
     
-    let word: String
+    dynamic var word: String = ""
     
-    let definition: [String:String]
+    dynamic var partOfSpeech: [String] = []
     
-    let synonyms: [String]
+    dynamic var definitions: [String] = []
     
-    let examples: String
+    dynamic var synonyms: [String] = []
     
-    init(word: String, definition: [String:String], synonyms: [String], examples: String) {
-        
-        self.word = word
-        self.definition = definition
-        self.synonyms = synonyms
-        self.examples = examples
-        
-    }
-    
-    
+    dynamic var example: String = ""
     
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import RealmSwift
+import DOFavoriteButton
 
 class ViewController: UIViewController {
 
@@ -49,8 +51,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var topConstraintOfExampleTitle: NSLayoutConstraint!
 
-    @IBOutlet weak var saveButton: UIButton!
-
+    @IBOutlet weak var bigSaveButton: DOFavoriteButton!
+    
     // MARK: Life Cycle
     
     override func viewWillAppear(animated: Bool) {
@@ -71,6 +73,8 @@ class ViewController: UIViewController {
         
         searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
+        bigSaveButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
+
     }
     
     override func viewDidLoad() {
@@ -131,7 +135,7 @@ class ViewController: UIViewController {
     
     // MARK: Get Definition
     
-    func getDefinition(word: String, completionHandler: (([String], definitons: [String], synonyms: [String], example: String) -> Void)) {
+    func getDefinition(word: String, completionHandler: ((word: String, partOfSpeech: [String], definitons: [String], synonyms: [String], example: String) -> Void)) {
         
         wordLabel.text = word
         
@@ -177,7 +181,7 @@ class ViewController: UIViewController {
                     let aExample: String = self.modifyExample(anyAnyJson["text"].stringValue)
                     example = aExample
                     
-                    completionHandler(partOfSpeech, definitons: definitions, synonyms: synonyms, example: example)
+                    completionHandler(word: word, partOfSpeech: partOfSpeech, definitons: definitions, synonyms: synonyms, example: example)
                     
                 })
             })
@@ -218,8 +222,9 @@ class ViewController: UIViewController {
     
     // MARK: Show Definition
     
-    func handleDefinitionView(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) -> Void {
+    func handleDefinitionView(word: String, partOfSpeech: [String], definitions: [String], synonyms: [String], example: String) -> Void {
         
+        println(word)
         println(partOfSpeech)
         println(definitions)
         println(synonyms)
@@ -326,15 +331,47 @@ class ViewController: UIViewController {
         self.exampleLabel.hidden = show
     }
     
-    // MARK: Handle User Data
+    // MARK: Save Button
     
-    func saveWord(partOfSpeech:[String], definitions:[String], synonyms:[String], example: String) {
+    func tapped(sender: DOFavoriteButton) {
+        if sender.selected {
+            // deselect
+            sender.deselect()
+        } else {
+            // select with animation
+            sender.select()
+        }
+    }
+    
+    
+    
+    
+    // MARK: Handle User Data
+
+    
+    func saveWord(word: String, partOfSpeech: [String], definitions: [String], synonyms: [String], example: String) {
         
-     //   let word = Word()
+        let savedWord = Word()
         
-        
+        savedWord.word = word
+        savedWord.partOfSpeech = partOfSpeech
+        savedWord.definitions = partOfSpeech
+        savedWord.synonyms = synonyms
+        savedWord.example = example
         
     }
+    
+    func writeRealm(savedWord: Word){
+        
+        let realm = Realm()
+        
+        realm.write {
+            realm.add(savedWord, update: true)
+        }
+        
+    }
+    
+    
 
     
     // MARK: Guillotine Menu
@@ -416,7 +453,6 @@ extension ViewController: UITextFieldDelegate {
         
     }
 }
-
 
 
 

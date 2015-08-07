@@ -6,4 +6,5 @@ use_frameworks!
 target 'Vac' do
     pod 'SwiftyJSON', '~> 2.2.0'
     pod 'RealmSwift'
+    pod 'DOFavoriteButton'
 end
