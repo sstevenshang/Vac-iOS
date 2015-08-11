@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		925A27C13CC334030737485B /* Pods_Vac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286507F81ABADE52DA6E5C52 /* Pods_Vac.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A43560A71B7AA75900F0D31D /* DefinitionGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43560A61B7AA75900F0D31D /* DefinitionGetter.swift */; };
+		A43560A91B7AA8F900F0D31D /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43560A81B7AA8F900F0D31D /* RealmHelper.swift */; };
 		A44D16231B66AEF100B0A7F5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44D16221B66AEF100B0A7F5 /* Word.swift */; };
 		A46860CD1B79213F00600365 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46860CC1B79213F00600365 /* RealmString.swift */; };
 		A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686C951B5DF3A100403429 /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		262C56149BDADC036B632800 /* Pods-Vac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vac/Pods-Vac.debug.xcconfig"; sourceTree = "<group>"; };
 		286507F81ABADE52DA6E5C52 /* Pods_Vac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43560A61B7AA75900F0D31D /* DefinitionGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionGetter.swift; sourceTree = "<group>"; };
+		A43560A81B7AA8F900F0D31D /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		A44D16221B66AEF100B0A7F5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		A46860CC1B79213F00600365 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
 		A4686C901B5DF3A100403429 /* Vac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +188,8 @@
 				A46860CC1B79213F00600365 /* RealmString.swift */,
 				A4ED1E051B79C4810062BEE7 /* FormatString.swift */,
 				A4ED1E071B7A98320062BEE7 /* WordStruct.swift */,
+				A43560A61B7AA75900F0D31D /* DefinitionGetter.swift */,
+				A43560A81B7AA8F900F0D31D /* RealmHelper.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 				A44D16231B66AEF100B0A7F5 /* Word.swift in Sources */,
 				A4686CC01B5DF46000403429 /* ViewController.swift in Sources */,
 				A4AA9AB51B5EE68600CE09AE /* DashboardViewController.swift in Sources */,
+				A43560A71B7AA75900F0D31D /* DefinitionGetter.swift in Sources */,
 				A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */,
 				A4686CBA1B5DF43700403429 /* GuillotineMenuSegue.swift in Sources */,
 				A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */,
@@ -367,6 +374,7 @@
 				A4ED1E061B79C4810062BEE7 /* FormatString.swift in Sources */,
 				A4ED1E081B7A98320062BEE7 /* WordStruct.swift in Sources */,
 				A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */,
+				A43560A91B7AA8F900F0D31D /* RealmHelper.swift in Sources */,
 				A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */,
 				A4F102491B63144400B9B5AF /* WordCell.swift in Sources */,
 			);

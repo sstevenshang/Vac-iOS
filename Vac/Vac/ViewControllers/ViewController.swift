@@ -53,6 +53,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var bigSaveButton: DOFavoriteButton!
     
+    var wordShown = WordStruct(word: "", partOfSpeech: [], definitions: [], synonyms: "", example: "")
+    
     // MARK: Life Cycle
     
     override func viewWillAppear(animated: Bool) {
@@ -133,123 +135,38 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: Get Definition
-    
-    func getDefinition(word: String, completionHandler: (WordStruct -> Void)) {
-        
-        wordLabel.text = word
-        
-        var partOfSpeech = [String]()
-        var definitions = [String]()
-        var synonyms: String = ""
-        var example: String = ""
-        
-        let format = FormatString()
-        
-        dictionary.callSession(word, type: "definition", completionBlock: {(data: NSData) -> Void in
-            
-            let json = JSON(data: data)
-            
-            for (index: String, subJson: JSON) in json {
-                
-                if subJson["partOfSpeech"].stringValue != ""{
-                    
-                    partOfSpeech.append(subJson["partOfSpeech"].stringValue)
-                    
-                    let definition: String = format.modifyDefinition(subJson["text"].stringValue)
-                    
-                    definitions.append(definition)
-                    
-                }
-            }
-            
-            self.dictionary.callSession(word, type: "synonyms", completionBlock: {(data: NSData) -> Void in
-                
-                let json = JSON(data: data)
-                let anyWord = json[0]
-                let anyWords = anyWord["words"]
-                
-                var synonymsArray: [String] = []
-                
-                for (index: String, subJson: JSON) in anyWords {
-                    
-                    let synonym: String = format.modifySynonym(subJson.stringValue)
-                    synonymsArray.append(synonym)
-                    
-                }
-                
-                synonyms = ", ".join(synonymsArray)
-                
-                self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
-                    
-                    let json = JSON(data: data)
-                    let anyJson = json["examples"]
-                    let anyAnyJson = anyJson[0]
-                    
-                    example = format.modifyExample(anyAnyJson["text"].stringValue)
-                    
-                    var thisWord = WordStruct(word: word, partOfSpeech: partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
-                    
-                    completionHandler(thisWord)
-                    
-                })
-            })
-        })
-    }
-    
-    var wordShown = WordStruct(word: "", partOfSpeech: [], definitions: [], synonyms: "", example: "")
-    
     // MARK: Save Button
+    
+    let realmHelper = RealmHelper()
     
     func tapped(sender: DOFavoriteButton) {
         if sender.selected {
             // deselect
             sender.deselect()
             
-            deleteRealm(wordShown)
+            realmHelper.deleteRealm(wordShown.word)
             
         } else {
             // select with animation
             sender.select()
             
-            writeRealm(wordShown)
+            realmHelper.writeRealm(wordShown)
         }
     }
     
     let realm = Realm()
-
-    func writeRealm(aWord: WordStruct) {
-        
-        let newWord = Word()
-        
-        newWord.handleData(aWord.word, partOfSpeech: aWord.partOfSpeech, definitions: aWord.definitions, synonyms: aWord.synonyms, example: aWord.example)
-        
-        realm.write {
-            self.realm.add(newWord, update: true)
-        }
-        
-        println("added!")
-    }
     
-    func deleteRealm(aWord: WordStruct) {
+    func checkWordInRealm(word: String) -> Bool {
         
-        let oldWord: Word = realm.objectForPrimaryKey(Word.self, key: aWord.word)!
-        
-        realm.write {
-            self.realm.delete(oldWord.partOfSpeech)
-            self.realm.delete(oldWord.definitions)
+        if let aWord = realm.objectForPrimaryKey(Word.self, key: word){
+            return true
         }
-        println("string deleted!")
-        
-        realm.write {
-            self.realm.delete(oldWord)
-        }
-        println("deleted!")
-        
+        return false
     }
     
     // MARK: Show Definition
     
+    let definitionGetter = DefinitionGetter()
     
     func handleDefinitionView(thisWord: WordStruct) {
         
@@ -267,57 +184,47 @@ class ViewController: UIViewController {
             self.firstDefinition.text = thisWord.definitions[0]
             
             let numberOfDefinitions = thisWord.partOfSpeech.count
-            
             println(numberOfDefinitions)
             
             switch numberOfDefinitions {
                 
             case 1:
-                
                 self.hideSecondSection(true)
                 self.hideThirdSection(true)
                 self.topConstraintOfSecondPartOfSpeech.constant = -107
                 // default: 15
                 
             case 2:
-                
                 self.secondPartOfSpeech.text = thisWord.partOfSpeech[1]
                 self.secondDefinition.text = thisWord.definitions[1]
-                
                 self.hideSecondSection(false)
                 self.hideThirdSection(true)
                 self.topConstraintOfThirdPartOfSpeech.constant = -46
                 // default: 15
                 
             case 3:
-                
                 self.secondPartOfSpeech.text = thisWord.partOfSpeech[1]
                 self.secondDefinition.text = thisWord.definitions[1]
                 self.thirdPartOfSeech.text = thisWord.partOfSpeech[2]
                 self.thirdDefinition.text = thisWord.definitions[2]
-                
                 self.hideSecondSection(false)
                 self.hideThirdSection(false)
                 
             default:
                 
-                println("oops")
-                
+                println("poop")
             }
             
             if thisWord.synonyms != "" {
                 
                 self.synonymsLabel.text = thisWord.synonyms
-                
                 self.hideSynonyms(false)
                 
             } else {
                 
                 self.hideSynonyms(true)
                 self.topConstraintOfExampleTitle.constant = -48
-                
                 // default: 20
-
             }
             
             if thisWord.example != "" {
@@ -331,20 +238,10 @@ class ViewController: UIViewController {
             }
             
             self.bigSaveButton.selected = self.checkWordInRealm(thisWord.word)
-        
             self.definitionView.hidden = false
-            
             println("definition view handled")
             
         })
-    }
-    
-    func checkWordInRealm(word: String) -> Bool {
-
-        if let aWord = realm.objectForPrimaryKey(Word.self, key: word){
-            return true
-        }
-        return false
     }
     
     func hideSecondSection(show: Bool) -> Void {
@@ -385,8 +282,6 @@ class ViewController: UIViewController {
             
         }
     }
-    
-    
 }
 
 // MARK: TableView
@@ -411,7 +306,10 @@ extension ViewController: UITableViewDataSource {
         
         if let result = searchResult?[indexPath.row] {
             
+            wordCell.word = result
             wordCell.wordLabel.text = result
+            wordCell.saveButton.selected = checkWordInRealm(result)
+            
             println(result)
         }
         
@@ -430,8 +328,9 @@ extension ViewController: UITableViewDelegate {
         let wordSelected = searchResult![indexPath.row]
         
         searchBar.text = wordSelected
+        wordLabel.text = wordSelected
         
-        getDefinition(wordSelected, completionHandler: self.handleDefinitionView)
+        definitionGetter.getDefinition(wordSelected, completionHandler: self.handleDefinitionView)
         
         searchBar.resignFirstResponder()
         
@@ -451,7 +350,6 @@ extension ViewController: UITextFieldDelegate {
         
     }
 }
-
 
 
 
