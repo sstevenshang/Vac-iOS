@@ -25,8 +25,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjj-dX-HiI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-Ru-zfd" userLabel="Content View" customClass="DefinitionView" customModule="Vac" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="489"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-Ru-zfd" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="488"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lso-7M-Hcu">
                                                 <rect key="frame" x="40" y="40" width="58" height="30"/>

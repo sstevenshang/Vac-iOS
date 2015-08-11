@@ -135,14 +135,16 @@ class ViewController: UIViewController {
     
     // MARK: Get Definition
     
-    func getDefinition(word: String, completionHandler: ((word: String, partOfSpeech: [String], definitons: [String], synonyms: [String], example: String) -> Void)) {
+    func getDefinition(word: String, completionHandler: (WordStruct -> Void)) {
         
         wordLabel.text = word
         
-        var partOfSpeech: [String] = []
-        var definitions: [String] = []
-        var synonyms: [String] = []
+        var partOfSpeech = [String]()
+        var definitions = [String]()
+        var synonyms: String = ""
         var example: String = ""
+        
+        let format = FormatString()
         
         dictionary.callSession(word, type: "definition", completionBlock: {(data: NSData) -> Void in
             
@@ -154,8 +156,10 @@ class ViewController: UIViewController {
                     
                     partOfSpeech.append(subJson["partOfSpeech"].stringValue)
                     
-                    let definition: String = self.modifyDefinition(subJson["text"].stringValue)
+                    let definition: String = format.modifyDefinition(subJson["text"].stringValue)
+                    
                     definitions.append(definition)
+                    
                 }
             }
             
@@ -165,11 +169,16 @@ class ViewController: UIViewController {
                 let anyWord = json[0]
                 let anyWords = anyWord["words"]
                 
+                var synonymsArray: [String] = []
+                
                 for (index: String, subJson: JSON) in anyWords {
                     
-                    let synonym: String = self.modifySynonym(subJson.stringValue)
-                    synonyms.append(synonym)
+                    let synonym: String = format.modifySynonym(subJson.stringValue)
+                    synonymsArray.append(synonym)
+                    
                 }
+                
+                synonyms = ", ".join(synonymsArray)
                 
                 self.dictionary.callSession(word, type: "example", completionBlock: {(data: NSData) -> Void in
                     
@@ -177,65 +186,87 @@ class ViewController: UIViewController {
                     let anyJson = json["examples"]
                     let anyAnyJson = anyJson[0]
                     
+                    example = format.modifyExample(anyAnyJson["text"].stringValue)
                     
-                    let aExample: String = self.modifyExample(anyAnyJson["text"].stringValue)
-                    example = aExample
+                    var thisWord = WordStruct(word: word, partOfSpeech: partOfSpeech, definitions: definitions, synonyms: synonyms, example: example)
                     
-                    completionHandler(word: word, partOfSpeech: partOfSpeech, definitons: definitions, synonyms: synonyms, example: example)
+                    completionHandler(thisWord)
                     
                 })
             })
         })
     }
     
-    func modifyExample(example: String) -> String {
-        
-        var newExample: String = example.stringByReplacingOccurrencesOfString("*", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("_", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("~", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("™", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("-- ", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("　　 ", withString: "")
-        newExample = newExample.stringByReplacingOccurrencesOfString("�", withString: "")
-        
-        return newExample
+    var wordShown = WordStruct(word: "", partOfSpeech: [], definitions: [], synonyms: "", example: "")
+    
+    // MARK: Save Button
+    
+    func tapped(sender: DOFavoriteButton) {
+        if sender.selected {
+            // deselect
+            sender.deselect()
+            
+            deleteRealm(wordShown)
+            
+        } else {
+            // select with animation
+            sender.select()
+            
+            writeRealm(wordShown)
+        }
     }
     
-    func modifySynonym(synonym: String) -> String {
+    let realm = Realm()
+
+    func writeRealm(aWord: WordStruct) {
         
-        var newSynonym: String = synonym.stringByReplacingOccurrencesOfString("<er>", withString: "")
-        newSynonym = newSynonym.stringByReplacingOccurrencesOfString("</er", withString: "")
+        let newWord = Word()
         
-        return newSynonym
+        newWord.handleData(aWord.word, partOfSpeech: aWord.partOfSpeech, definitions: aWord.definitions, synonyms: aWord.synonyms, example: aWord.example)
+        
+        realm.write {
+            self.realm.add(newWord, update: true)
+        }
+        
+        println("added!")
     }
     
-    func modifyDefinition(definition: String) -> String {
+    func deleteRealm(aWord: WordStruct) {
         
-        var newDefinition: String = definition.stringByReplacingOccurrencesOfString("  ", withString: ": ")
-        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(":: ", withString: ": ")
-        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(": (", withString: " (")
-        newDefinition = newDefinition.stringByReplacingOccurrencesOfString("( ", withString: "(")
-        newDefinition = newDefinition.stringByReplacingOccurrencesOfString(".: ", withString: ".")
+        let oldWord: Word = realm.objectForPrimaryKey(Word.self, key: aWord.word)!
         
-        return newDefinition
+        realm.write {
+            self.realm.delete(oldWord.partOfSpeech)
+            self.realm.delete(oldWord.definitions)
+        }
+        println("string deleted!")
+        
+        realm.write {
+            self.realm.delete(oldWord)
+        }
+        println("deleted!")
+        
     }
     
     // MARK: Show Definition
     
-    func handleDefinitionView(word: String, partOfSpeech: [String], definitions: [String], synonyms: [String], example: String) -> Void {
+    
+    func handleDefinitionView(thisWord: WordStruct) {
         
-        println(word)
-        println(partOfSpeech)
-        println(definitions)
-        println(synonyms)
-        println(example)
+        wordShown = thisWord
+        
+        println(thisWord.word)
+        println(thisWord.partOfSpeech)
+        println(thisWord.definitions)
+        println(thisWord.synonyms)
+        println(thisWord.example)
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
-            self.firstPartOfSpeech.text = partOfSpeech[0]
-            self.firstDefinition.text = definitions[0]
+            self.firstPartOfSpeech.text = thisWord.partOfSpeech[0]
+            self.firstDefinition.text = thisWord.definitions[0]
             
-            let numberOfDefinitions = partOfSpeech.count
+            let numberOfDefinitions = thisWord.partOfSpeech.count
             
             println(numberOfDefinitions)
             
@@ -250,8 +281,8 @@ class ViewController: UIViewController {
                 
             case 2:
                 
-                self.secondPartOfSpeech.text = partOfSpeech[1]
-                self.secondDefinition.text = definitions[1]
+                self.secondPartOfSpeech.text = thisWord.partOfSpeech[1]
+                self.secondDefinition.text = thisWord.definitions[1]
                 
                 self.hideSecondSection(false)
                 self.hideThirdSection(true)
@@ -260,10 +291,10 @@ class ViewController: UIViewController {
                 
             case 3:
                 
-                self.secondPartOfSpeech.text = partOfSpeech[1]
-                self.secondDefinition.text = definitions[1]
-                self.thirdPartOfSeech.text = partOfSpeech[2]
-                self.thirdDefinition.text = definitions[2]
+                self.secondPartOfSpeech.text = thisWord.partOfSpeech[1]
+                self.secondDefinition.text = thisWord.definitions[1]
+                self.thirdPartOfSeech.text = thisWord.partOfSpeech[2]
+                self.thirdDefinition.text = thisWord.definitions[2]
                 
                 self.hideSecondSection(false)
                 self.hideThirdSection(false)
@@ -274,10 +305,9 @@ class ViewController: UIViewController {
                 
             }
             
-            if synonyms.count != 0 {
-
-                var synonymsString: String = ", ".join(synonyms)
-                self.synonymsLabel.text = synonymsString
+            if thisWord.synonyms != "" {
+                
+                self.synonymsLabel.text = thisWord.synonyms
                 
                 self.hideSynonyms(false)
                 
@@ -285,26 +315,36 @@ class ViewController: UIViewController {
                 
                 self.hideSynonyms(true)
                 self.topConstraintOfExampleTitle.constant = -48
+                
                 // default: 20
 
             }
             
-            if example != "" {
+            if thisWord.example != "" {
                 
                 self.hideExample(false)
-                self.exampleLabel.text = example
+                self.exampleLabel.text = thisWord.example
                 
             } else {
                 
                 self.hideExample(true)
             }
             
+            self.bigSaveButton.selected = self.checkWordInRealm(thisWord.word)
+        
             self.definitionView.hidden = false
             
             println("definition view handled")
             
         })
-        
+    }
+    
+    func checkWordInRealm(word: String) -> Bool {
+
+        if let aWord = realm.objectForPrimaryKey(Word.self, key: word){
+            return true
+        }
+        return false
     }
     
     func hideSecondSection(show: Bool) -> Void {
@@ -331,48 +371,6 @@ class ViewController: UIViewController {
         self.exampleLabel.hidden = show
     }
     
-    // MARK: Save Button
-    
-    func tapped(sender: DOFavoriteButton) {
-        if sender.selected {
-            // deselect
-            sender.deselect()
-        } else {
-            // select with animation
-            sender.select()
-        }
-    }
-    
-    
-    
-    
-    // MARK: Handle User Data
-
-    
-    func saveWord(word: String, partOfSpeech: [String], definitions: [String], synonyms: [String], example: String) {
-        
-        let savedWord = Word()
-        
-        savedWord.word = word
-        savedWord.partOfSpeech = partOfSpeech
-        savedWord.definitions = partOfSpeech
-        savedWord.synonyms = synonyms
-        savedWord.example = example
-        
-    }
-    
-    func writeRealm(savedWord: Word){
-        
-        let realm = Realm()
-        
-        realm.write {
-            realm.add(savedWord, update: true)
-        }
-        
-    }
-    
-    
-
     
     // MARK: Guillotine Menu
     

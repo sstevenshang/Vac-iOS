@@ -13,12 +13,37 @@ class Word: Object {
     
     dynamic var word: String = ""
     
-    dynamic var partOfSpeech: [String] = []
+    var partOfSpeech = List<RealmString>()
     
-    dynamic var definitions: [String] = []
+    var definitions = List<RealmString>()
     
-    dynamic var synonyms: [String] = []
+    dynamic var synonyms: String = ""
     
     dynamic var example: String = ""
+    
+    func handleData(word: String, partOfSpeech: [String], definitions: [String], synonyms: String, example: String) {
+        
+        self.word = word
+        self.synonyms = synonyms
+        self.example = example
+        
+        for aString in partOfSpeech {
+            
+            let aRealmString = RealmString()
+            aRealmString.thisString = aString
+            self.partOfSpeech.append(aRealmString)
+        }
+        
+        for aString in definitions {
+            
+            let aRealmString = RealmString()
+            aRealmString.thisString = aString
+            self.definitions.append(aRealmString)
+        }
+    }
+    
+    override static func primaryKey() -> String? {
+        return "word"
+    }
     
 }
