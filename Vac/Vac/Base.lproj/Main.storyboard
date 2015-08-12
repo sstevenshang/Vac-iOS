@@ -295,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="1114"/>
+            <point key="canvasLocation" x="1219" y="1114"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="LTX-Tm-QUg">
@@ -310,9 +310,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdM-Np-eey">
-                                <rect key="frame" x="235.5" y="285" width="129" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="  Dashboard" image="DashboardButton"/>
+                                <rect key="frame" x="240" y="270" width="120" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="A59-4k-VtI"/>
+                                    <constraint firstAttribute="width" constant="120" id="SX3-cd-Om4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="15" maxX="70" maxY="15"/>
+                                <state key="normal" title="list" image="ListButton"/>
+                                <connections>
+                                    <action selector="listButtonPressed:" destination="Tlz-ov-QBM" eventType="touchUpInside" id="bxd-cj-Kz3"/>
+                                    <segue destination="osv-9a-ZgA" kind="presentation" identifier="showList" modalTransitionStyle="crossDissolve" id="ZZr-MV-uep"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -321,10 +331,13 @@
                             <constraint firstAttribute="centerY" secondItem="AdM-Np-eey" secondAttribute="centerY" id="psH-8K-B1J"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="listButton" destination="AdM-Np-eey" id="DG7-jn-nFg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8x3-Uh-NPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="1824"/>
+            <point key="canvasLocation" x="1219" y="1852"/>
         </scene>
         <!--Navigation Bar Controller-->
         <scene sceneID="g0i-fF-enF">
@@ -343,10 +356,118 @@
             </objects>
             <point key="canvasLocation" x="361" y="1114"/>
         </scene>
+        <!--List View Controller-->
+        <scene sceneID="Gl7-PO-WRG">
+            <objects>
+                <viewController id="gyk-IF-T9z" userLabel="List View Controller" customClass="ListViewController" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wgO-Qf-YqE"/>
+                        <viewControllerLayoutGuide type="bottom" id="dFI-nF-n9O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nQK-47-ben">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Rt5-nn-pdO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListWordCell" rowHeight="81" id="jY7-vO-a6w" customClass="ListWordCell" customModule="Vac" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jY7-vO-a6w" id="seH-cA-u1p">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abomination" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfN-Oo-VCc">
+                                                    <rect key="frame" x="15" y="15" width="104" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noun: disgust, odiousness, detestation, loathsomeness, loathing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEv-2h-oak">
+                                                    <rect key="frame" x="15" y="43" width="570" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="rEv-2h-oak" firstAttribute="top" secondItem="LfN-Oo-VCc" secondAttribute="bottom" constant="7" id="3GV-5a-iK1"/>
+                                                <constraint firstItem="LfN-Oo-VCc" firstAttribute="leading" secondItem="rEv-2h-oak" secondAttribute="leading" id="AMX-j0-U64"/>
+                                                <constraint firstAttribute="trailing" secondItem="rEv-2h-oak" secondAttribute="trailing" constant="15" id="e1e-OK-ZnJ"/>
+                                                <constraint firstItem="LfN-Oo-VCc" firstAttribute="top" secondItem="seH-cA-u1p" secondAttribute="top" constant="15" id="kMz-Jq-TH6"/>
+                                                <constraint firstItem="LfN-Oo-VCc" firstAttribute="leading" secondItem="seH-cA-u1p" secondAttribute="leading" constant="15" id="pDU-2k-dIV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="listDefinition" destination="rEv-2h-oak" id="oAa-jq-Eqh"/>
+                                            <outlet property="listWord" destination="LfN-Oo-VCc" id="zcu-Ul-Muc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gyk-IF-T9z" id="3JI-7N-wN6"/>
+                                    <outlet property="delegate" destination="gyk-IF-T9z" id="AgJ-0J-beA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rt5-nn-pdO" firstAttribute="leading" secondItem="nQK-47-ben" secondAttribute="leading" id="Ipm-rG-8ic"/>
+                            <constraint firstAttribute="trailing" secondItem="Rt5-nn-pdO" secondAttribute="trailing" id="h5q-Um-2Ek"/>
+                            <constraint firstItem="Rt5-nn-pdO" firstAttribute="top" secondItem="nQK-47-ben" secondAttribute="top" id="iqX-s9-oFP"/>
+                            <constraint firstItem="dFI-nF-n9O" firstAttribute="top" secondItem="Rt5-nn-pdO" secondAttribute="bottom" id="oJ8-ci-0Up"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kGk-Ia-aOP">
+                        <barButtonItem key="leftBarButtonItem" id="DHB-db-3g3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HU2-UN-J4b">
+                                <rect key="frame" x="16" y="11" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" image="MenuButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listTableView" destination="Rt5-nn-pdO" id="GeN-ZT-Drj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUZ-Bq-aND" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2679" y="1852"/>
+        </scene>
+        <!--Navigation Bar Controller-->
+        <scene sceneID="eLO-SU-G8e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="osv-9a-ZgA" customClass="NavigationBarController" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Huq-tE-uDR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gyk-IF-T9z" kind="relationship" relationship="rootViewController" id="W1W-ya-drz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="32b-t2-flt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1959" y="1852"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BigStarButton" width="64" height="64"/>
-        <image name="DashboardButton" width="30" height="30"/>
+        <image name="ListButton" width="100" height="100"/>
         <image name="MenuButton" width="21" height="15"/>
         <image name="SaveButton" width="30" height="30"/>
     </resources>

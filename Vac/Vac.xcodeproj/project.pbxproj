@@ -25,6 +25,8 @@
 		A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */; };
 		A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */; };
 		A4AA9AB51B5EE68600CE09AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */; };
+		A4B010491B7B1FF90036D3DB /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B010481B7B1FF90036D3DB /* ListViewController.swift */; };
+		A4B0104D1B7B29BB0036D3DB /* ListWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B0104C1B7B29BB0036D3DB /* ListWordCell.swift */; };
 		A4ED1E061B79C4810062BEE7 /* FormatString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED1E051B79C4810062BEE7 /* FormatString.swift */; };
 		A4ED1E081B7A98320062BEE7 /* WordStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED1E071B7A98320062BEE7 /* WordStruct.swift */; };
 		A4F102491B63144400B9B5AF /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F102481B63144400B9B5AF /* WordCell.swift */; };
@@ -64,6 +66,8 @@
 		A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryHelper.swift; sourceTree = "<group>"; };
 		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		A4B010481B7B1FF90036D3DB /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		A4B0104C1B7B29BB0036D3DB /* ListWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListWordCell.swift; sourceTree = "<group>"; };
 		A4ED1E051B79C4810062BEE7 /* FormatString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatString.swift; sourceTree = "<group>"; };
 		A4ED1E071B7A98320062BEE7 /* WordStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordStruct.swift; sourceTree = "<group>"; };
 		A4F102481B63144400B9B5AF /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				A4686CBF1B5DF46000403429 /* ViewController.swift */,
 				A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */,
 				A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */,
+				A4B010481B7B1FF90036D3DB /* ListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F102481B63144400B9B5AF /* WordCell.swift */,
+				A4B0104C1B7B29BB0036D3DB /* ListWordCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,6 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B010491B7B1FF90036D3DB /* ListViewController.swift in Sources */,
+				A4B0104D1B7B29BB0036D3DB /* ListWordCell.swift in Sources */,
 				A46860CD1B79213F00600365 /* RealmString.swift in Sources */,
 				A44D16231B66AEF100B0A7F5 /* Word.swift in Sources */,
 				A4686CC01B5DF46000403429 /* ViewController.swift in Sources */,

@@ -27,7 +27,7 @@ class GuillotineTransitionAnimation: NSObject {
     enum Mode { case Presentation, Dismissal }
     
     private let mode: Mode
-    private let duration = 0.5
+    private let duration = 0.3
     private let vectorDY: CGFloat = 1500
     private let vectorDx: CGFloat = 0.0
     private let initialMenuRotationAngle: CGFloat = -90
@@ -102,16 +102,11 @@ class GuillotineTransitionAnimation: NSObject {
         println("added searchbar")
         
         fuckingSearchBar.center = CGPointMake(22, 187.5 + statusbarHeight)
-        //(navigationBarHeight / 2, CGRectGetWidth(menu.view.frame)/2)
         
         fuckingSearchBar.transform = CGAffineTransformMakeRotation( ( 90 * CGFloat(M_PI) ) / 180 )
         
         UIView.animateWithDuration(duration, animations: { () -> Void in
             fuckingSearchBar.alpha = 1.0 }, completion: nil)
-        
-        
-
-        
     }
     
     private func animateMenu(view: UIView, context:UIViewControllerContextTransitioning) {

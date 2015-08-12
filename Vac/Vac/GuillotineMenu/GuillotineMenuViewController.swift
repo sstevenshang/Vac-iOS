@@ -10,6 +10,14 @@ import UIKit
 
 class GuillotineMenuViewController: UIViewController {
 
+    @IBOutlet weak var listButton: UIButton!
+    
+    @IBAction func listButtonPressed(sender: AnyObject) {
+
+    }
+    
+    
+    
     var hostNavigationBarHeight: CGFloat!
 
     var menuButton: UIButton!
@@ -50,6 +58,7 @@ class GuillotineMenuViewController: UIViewController {
 // MARK: Actions
     func closeMenuButtonTapped() {
         self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     func setMenuButtonWithImage(image: UIImage) {

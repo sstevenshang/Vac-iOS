@@ -82,6 +82,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let realm = Realm()
+//        realm.write{
+//            self.realm.deleteAll()
+//        }
+//        println("all is lost, jump Jack.")
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -239,7 +245,7 @@ class ViewController: UIViewController {
             
             self.bigSaveButton.selected = self.checkWordInRealm(thisWord.word)
             self.definitionView.hidden = false
-            println("definition view handled")
+            println("I handled the body, don't worry.")
             
         })
     }
