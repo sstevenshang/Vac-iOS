@@ -34,6 +34,7 @@ class GuillotineMenuSegue: UIStoryboardSegue {
 }
 
 extension GuillotineMenuSegue: UIViewControllerTransitioningDelegate {
+    
     func animationControllerForPresentedController(presented: UIViewController, presentingController _: UIViewController,
         sourceController _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
             

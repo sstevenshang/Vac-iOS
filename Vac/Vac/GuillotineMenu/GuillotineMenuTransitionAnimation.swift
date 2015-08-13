@@ -26,6 +26,8 @@ import UIKit
 class GuillotineTransitionAnimation: NSObject {
     enum Mode { case Presentation, Dismissal }
     
+    var searchBarOrNot: Bool!
+    
     private let mode: Mode
     private let duration = 0.3
     private let vectorDY: CGFloat = 1500

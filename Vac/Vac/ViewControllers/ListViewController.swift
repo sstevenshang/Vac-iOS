@@ -12,8 +12,13 @@ import RealmSwift
 class ListViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
+
+    @IBOutlet weak var menuButton: UIButton!
+    
+    @IBOutlet weak var searchBar: UITextField!
     
     var words = [Word]()
+    var wordsShown = [Word]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +29,23 @@ class ListViewController: UIViewController {
         
         for savedWord in savedWords {
             
-            words.append(savedWord)
+            if !contains(words, savedWord){
+                words.append(savedWord)
+            }
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        searchBar.delegate = self
+        searchBar.layer.cornerRadius = 15.0
+        searchBar.attributedPlaceholder = NSAttributedString (string:"Search!", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
+        
+        let clearButton = UIButton(frame: CGRectMake(0, 0, 15, 15))
+        clearButton.setImage(UIImage(named: "ClearButton")!, forState: UIControlState.Normal)
+        searchBar.rightView = clearButton
+        clearButton.addTarget(self, action: "clear:", forControlEvents: UIControlEvents.TouchUpInside)
+        searchBar.rightViewMode = UITextFieldViewMode.WhileEditing
+        
+        searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,9 +78,30 @@ class ListViewController: UIViewController {
         return aString
     }
     
+    func textFieldDidChange(searchBar: UITextField) {
+        
+
+        
+    }
+    
+    // MARK: Guillotine Menu
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "showMenu") {
+            
+            let destinationVC = segue.destinationViewController as! GuillotineMenuViewController
+            destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
+            destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
+            destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
+            
+        }
+    }
+
+    
 }
 
-// MARK: TableView Data Source
+// MARK: TableView
 
 extension ListViewController: UITableViewDataSource {
     
@@ -82,6 +117,8 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("ListWordCell", forIndexPath: indexPath) as! ListWordCell
         let wordOfCell = words[indexPath.row]
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         cell.listWord.text = wordOfCell.word
         cell.listDefinition.text = constructDefinition(wordOfCell)
         println(wordOfCell.word)
@@ -91,25 +128,18 @@ extension ListViewController: UITableViewDataSource {
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-// Return NO if you do not want the specified item to be editable.
-return true
-}
-*/
+// MARK: TextField
 
-/*
-// Override to support editing the table view.
-override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-if editingStyle == .Delete {
-// Delete the row from the data source
-tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-} else if editingStyle == .Insert {
-// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+extension ListViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(searchBar: UITextField) -> Bool{
+        
+        searchBar.resignFirstResponder()
+        return true
+        
+    }
 }
-}
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -123,15 +153,5 @@ override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath
 override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 // Return NO if you do not want the item to be re-orderable.
 return true
-}
-*/
-
-/*
-// MARK: - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-// Get the new view controller using [segue destinationViewController].
-// Pass the selected object to the new view controller.
 }
 */

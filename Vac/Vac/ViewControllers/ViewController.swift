@@ -286,6 +286,8 @@ class ViewController: UIViewController {
             destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
             destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
             
+            
+            
         }
     }
 }

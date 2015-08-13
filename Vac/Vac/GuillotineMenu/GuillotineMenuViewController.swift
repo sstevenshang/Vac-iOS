@@ -9,16 +9,10 @@
 import UIKit
 
 class GuillotineMenuViewController: UIViewController {
-
-    @IBOutlet weak var listButton: UIButton!
-    
-    @IBAction func listButtonPressed(sender: AnyObject) {
-
-    }
-    
-    
     
     var hostNavigationBarHeight: CGFloat!
+    
+//    var showSearchBar: Bool!
 
     var menuButton: UIButton!
     var menuButtonLeadingConstraint: NSLayoutConstraint!
