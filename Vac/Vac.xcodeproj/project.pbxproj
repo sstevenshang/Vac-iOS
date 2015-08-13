@@ -22,6 +22,7 @@
 		A4686CBC1B5DF43700403429 /* GuillotineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */; };
 		A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB91B5DF43700403429 /* UIViewExtension.swift */; };
 		A4686CC01B5DF46000403429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CBF1B5DF46000403429 /* ViewController.swift */; };
+		A47B2A931B7D200400621777 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47B2A921B7D200400621777 /* CustomSegue.swift */; };
 		A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */; };
 		A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */; };
 		A4AA9AB51B5EE68600CE09AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */; };
@@ -64,6 +65,7 @@
 		A4686CB81B5DF43700403429 /* GuillotineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuillotineMenuViewController.swift; sourceTree = "<group>"; };
 		A4686CB91B5DF43700403429 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A4686CBF1B5DF46000403429 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A47B2A921B7D200400621777 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryHelper.swift; sourceTree = "<group>"; };
 		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A4686C941B5DF3A100403429 /* Info.plist */,
+				A47B2A921B7D200400621777 /* CustomSegue.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				A4C2BAA81B7BCB7800053424 /* ListWordViewController.swift in Sources */,
 				A4AA9AB51B5EE68600CE09AE /* DashboardViewController.swift in Sources */,
 				A43560A71B7AA75900F0D31D /* DefinitionGetter.swift in Sources */,
+				A47B2A931B7D200400621777 /* CustomSegue.swift in Sources */,
 				A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */,
 				A4686CBA1B5DF43700403429 /* GuillotineMenuSegue.swift in Sources */,
 				A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */,
