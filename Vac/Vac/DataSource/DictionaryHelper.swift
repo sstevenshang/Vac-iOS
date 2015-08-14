@@ -54,6 +54,8 @@ class DictionaryHelper: NSObject {
     
     func callSession(searchKey: String, type: String, completionBlock: (NSData -> Void)) -> Void{
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
         var url = self.createURL(searchKey, type: type)
         
         let dataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
@@ -64,7 +66,7 @@ class DictionaryHelper: NSObject {
                 
             } else {
                 
-                //println(NSString(data: data, encoding: NSUTF8StringEncoding))
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 completionBlock(data)
             }
         })
