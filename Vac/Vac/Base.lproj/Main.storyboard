@@ -456,8 +456,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Job! You've Studied Them All!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
-                                <rect key="frame" x="162.5" y="270" width="275" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Job! You've Studied Them All!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
+                                <rect key="frame" x="162" y="190" width="275" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -488,6 +488,25 @@
                                     <action selector="yesButtonTouched:" destination="SMj-if-czp" eventType="touchUpInside" id="CUd-Zg-ZC9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq4-xG-5bC">
+                                <rect key="frame" x="269" y="290" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="PBm-M7-XW8"/>
+                                    <constraint firstAttribute="height" constant="60" id="Xhj-4k-U8W"/>
+                                </constraints>
+                                <state key="normal" image="ReplayButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="replayButtonTouched:" destination="SMj-if-czp" eventType="touchUpInside" id="m61-fc-vNe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tapped to Replay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB8-jZ-ILY">
+                                <rect key="frame" x="233" y="250" width="134.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-he-MlW">
                                 <rect key="frame" x="30" y="50" width="540" height="440"/>
                                 <connections>
@@ -498,12 +517,16 @@
                         <color key="backgroundColor" red="0.14117647058823529" green="0.14509803921568629" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Sm6-he-MlW" firstAttribute="centerX" secondItem="8QK-GM-S1L" secondAttribute="centerX" constant="75" id="1md-49-fch"/>
-                            <constraint firstAttribute="centerY" secondItem="BAa-j9-PU2" secondAttribute="centerY" constant="20" id="CWL-rp-XCm"/>
+                            <constraint firstItem="uB8-jZ-ILY" firstAttribute="centerX" secondItem="BAa-j9-PU2" secondAttribute="centerX" id="3jC-ts-oKj"/>
+                            <constraint firstAttribute="centerY" secondItem="BAa-j9-PU2" secondAttribute="centerY" constant="100" id="CWL-rp-XCm"/>
                             <constraint firstAttribute="centerX" secondItem="BAa-j9-PU2" secondAttribute="centerX" id="Rdt-zk-4EV"/>
                             <constraint firstItem="4VH-1W-Ttz" firstAttribute="centerX" secondItem="Sm6-he-MlW" secondAttribute="centerX" constant="75" id="UDQ-sF-Rfs"/>
                             <constraint firstItem="Sm6-he-MlW" firstAttribute="leading" secondItem="WWW-de-qyd" secondAttribute="leading" constant="30" id="XtW-Kz-bma"/>
+                            <constraint firstItem="uB8-jZ-ILY" firstAttribute="top" secondItem="BAa-j9-PU2" secondAttribute="bottom" constant="40" id="Z8A-2c-dul"/>
                             <constraint firstItem="Sm6-he-MlW" firstAttribute="top" secondItem="WPb-Md-r2U" secondAttribute="bottom" constant="30" id="aje-Ei-zxD"/>
+                            <constraint firstItem="jq4-xG-5bC" firstAttribute="centerX" secondItem="BAa-j9-PU2" secondAttribute="centerX" id="dvq-51-VQN"/>
                             <constraint firstItem="4VH-1W-Ttz" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="30" id="ekZ-Ot-gA9"/>
+                            <constraint firstItem="jq4-xG-5bC" firstAttribute="top" secondItem="BAa-j9-PU2" secondAttribute="bottom" constant="80" id="hRR-tQ-dqK"/>
                             <constraint firstItem="ReX-Sh-gpS" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="110" id="hnp-gs-uxA"/>
                             <constraint firstAttribute="trailing" secondItem="Sm6-he-MlW" secondAttribute="trailing" constant="30" id="nPq-Pe-UgA"/>
                             <constraint firstItem="8QK-GM-S1L" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="30" id="qwr-2w-amB"/>
@@ -525,8 +548,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="anotherSentenceLabel" destination="uB8-jZ-ILY" id="UmV-CW-N5M"/>
                         <outlet property="flashCard" destination="Sm6-he-MlW" id="dWy-Ck-G1X"/>
                         <outlet property="noButton" destination="8QK-GM-S1L" id="BGB-0x-dDR"/>
+                        <outlet property="replayButton" destination="jq4-xG-5bC" id="4zU-Ve-cKL"/>
                         <outlet property="sentenceLabel" destination="BAa-j9-PU2" id="1jk-SV-iam"/>
                         <outlet property="yesButton" destination="4VH-1W-Ttz" id="eDK-H1-Qq0"/>
                     </connections>
@@ -1046,6 +1071,7 @@
         <image name="ListButton" width="100" height="100"/>
         <image name="MenuButton" width="21" height="15"/>
         <image name="NoButton" width="200" height="200"/>
+        <image name="ReplayButton" width="100" height="100"/>
         <image name="SaveButton" width="30" height="30"/>
         <image name="StudyButton" width="100" height="100"/>
         <image name="YesButton" width="200" height="200"/>

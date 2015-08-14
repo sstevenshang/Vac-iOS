@@ -20,6 +20,18 @@ class FlashcardsViewController: UIViewController {
     
     @IBOutlet weak var sentenceLabel: UILabel!
     
+    @IBOutlet weak var anotherSentenceLabel: UILabel!
+    
+    @IBOutlet weak var replayButton: UIButton!
+    
+    @IBAction func replayButtonTouched(sender: AnyObject) {
+        
+        words = shuffle(words)
+        hideEverything(false)
+        reloadData()
+    
+    }
+    
     @IBAction func noButtonTouched(sender: AnyObject) {
         checkIfFinished()
         
@@ -70,10 +82,7 @@ class FlashcardsViewController: UIViewController {
         
         if wordCount == (words.count - 1){
             
-            flashCard.hidden = true
-            sentenceLabel.hidden = false
-            yesButton.hidden = true
-            noButton.hidden = true
+            hideEverything(true)
             wordCount = 0
             
             let mixpanel: Mixpanel = Mixpanel.sharedInstance()
@@ -103,8 +112,11 @@ class FlashcardsViewController: UIViewController {
         
         flashCard.hidden = show
         sentenceLabel.hidden = !show
+        anotherSentenceLabel.hidden = !show
+        replayButton.hidden = !show
         yesButton.hidden = show
         noButton.hidden = show
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
