@@ -19,13 +19,22 @@ class FlashcardsViewController: UIViewController {
     
     @IBOutlet weak var sentenceLabel: UILabel!
     
-
+    @IBAction func noButtonTouched(sender: AnyObject) {
+        checkIfFinished()
+        
+    }
+    
+    @IBAction func yesButtonTouched(sender: AnyObject) {
+        checkIfFinished()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getWords()
         sentenceLabel.hidden = true
+        wordCount = 0
         
     }
 
@@ -49,6 +58,34 @@ class FlashcardsViewController: UIViewController {
         }
         
         words = shuffle(words)
+        println("got words")
+    }
+    
+    var wordCount: Int = 0
+    
+    func checkIfFinished() {
+        
+        if wordCount > words.count{
+            
+            flashCard.hidden = true
+            sentenceLabel.hidden = false
+            wordCount = 0
+            
+        } else {
+            
+            wordCount++
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    func assignWord(wordCount: Int) -> Word{
+        
+        return words[wordCount]
     }
     
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
@@ -61,12 +98,19 @@ class FlashcardsViewController: UIViewController {
         return list
     }
     
-    func tapped() {
+    func reloadData() {
         
-        println("hey")
-//        
-//        UIView.transitionFromView(frontCard, toView: backCard, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight | UIViewAnimationOptions.ShowHideTransitionViews, completion: nil)
-
+        assignWord()
+        
+        performSegueWithIdentifier("childView", sender: FlashcardsViewController.self)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+        if segue.identifier == "childView" {
+            let destination = segue.destinationViewController as! Flashcard
+        }
     }
     
 }

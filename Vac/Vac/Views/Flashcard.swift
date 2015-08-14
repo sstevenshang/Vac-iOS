@@ -16,29 +16,19 @@ class Flashcard: UIViewController {
 
     @IBOutlet weak var frontView: UIView!
     
-    // MARK: Front
+    // MARK: Card
     
+    @IBOutlet weak var wordLabel: UILabel!
     
+    @IBOutlet weak var partOfSpeechLabel: UILabel!
     
-    
-    // MARK: BACK
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @IBOutlet weak var definitionLabel: UILabel!
     
     var layer: CALayer {
         return mainView.layer
     }
     
+    var word: Word!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +52,7 @@ class Flashcard: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+        
     func tapped() {
         println("hayyyy")
         
@@ -74,6 +64,39 @@ class Flashcard: UIViewController {
             showingFront = true
         }
 
+    }
+    
+    // MARK: Construction
+    
+    func constructPartOfSpeech(aWord: Word) -> String {
+        
+        var aString = String()
+        var partOfSpeechArray = [String]()
+        
+        for partOfSpeech in aWord.partOfSpeech{
+            
+            let part = partOfSpeech.thisString
+            if !contains(partOfSpeechArray, part){
+                partOfSpeechArray.append(part)
+            }
+        }
+        
+        aString = "/".join(partOfSpeechArray)
+        
+        return aString
+    }
+    
+    func constructDefinition(aWord: Word) -> String {
+        
+        var aString = String()
+        
+        if aWord.synonyms != "" {
+            aString += aWord.synonyms
+        } else{
+            aString += aWord.definitions[0].thisString
+        }
+        
+        return aString
     }
 
 }

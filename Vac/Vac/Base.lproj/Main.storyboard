@@ -452,7 +452,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ReX-Sh-gpS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WWW-de-qyd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've Studied 'em All!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
@@ -470,6 +470,9 @@
                                 <state key="normal" image="NoButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="noButtonTouched:" destination="SMj-if-czp" eventType="touchUpInside" id="ZNH-Ie-q0N"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VH-1W-Ttz" userLabel="YesButton">
                                 <rect key="frame" x="350" y="456" width="50" height="50"/>
@@ -480,11 +483,14 @@
                                 <state key="normal" image="YesButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="yesButtonTouched:" destination="SMj-if-czp" eventType="touchUpInside" id="CUd-Zg-ZC9"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-he-MlW">
                                 <rect key="frame" x="30" y="30" width="540" height="396"/>
                                 <connections>
-                                    <segue destination="H6l-sC-vB9" kind="embed" id="lZ7-bQ-MM9"/>
+                                    <segue destination="H6l-sC-vB9" kind="embed" identifier="childView" id="lZ7-bQ-MM9"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -518,7 +524,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="flashCard" destination="Sm6-he-MlW" id="Ekl-G1-Izh"/>
+                        <outlet property="flashCard" destination="Sm6-he-MlW" id="dWy-Ck-G1X"/>
                         <outlet property="noButton" destination="8QK-GM-S1L" id="BGB-0x-dDR"/>
                         <outlet property="sentenceLabel" destination="BAa-j9-PU2" id="1jk-SV-iam"/>
                         <outlet property="yesButton" destination="4VH-1W-Ttz" id="eDK-H1-Qq0"/>
@@ -961,11 +967,47 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMJ-nL-bkF" userLabel="Back">
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="396"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="noun:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufh-9k-wO6">
+                                        <rect key="frame" x="245.5" y="110" width="49" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="term, vocable, talk, discourse, speech" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wE-PJ-k4X">
+                                        <rect key="frame" x="10" y="164.5" width="520" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4wE-PJ-k4X" secondAttribute="trailing" constant="10" id="2Jd-rO-k16"/>
+                                    <constraint firstItem="4wE-PJ-k4X" firstAttribute="top" secondItem="Ufh-9k-wO6" secondAttribute="bottom" constant="30" id="9NO-V5-fii"/>
+                                    <constraint firstAttribute="centerX" secondItem="4wE-PJ-k4X" secondAttribute="centerX" id="Dhi-fp-kB4"/>
+                                    <constraint firstAttribute="centerY" secondItem="4wE-PJ-k4X" secondAttribute="centerY" constant="20" id="O1x-Vs-yDr"/>
+                                    <constraint firstItem="4wE-PJ-k4X" firstAttribute="leading" secondItem="mMJ-nL-bkF" secondAttribute="leading" constant="10" id="vnf-zt-Tsp"/>
+                                    <constraint firstItem="Ufh-9k-wO6" firstAttribute="centerX" secondItem="4wE-PJ-k4X" secondAttribute="centerX" id="yzq-lp-IMH"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1g-Ne-euo" userLabel="Front">
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="396"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQF-dX-iZG">
+                                        <rect key="frame" x="0.0" y="171" width="540" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="vQF-dX-iZG" secondAttribute="centerX" id="8hd-6H-Rbf"/>
+                                    <constraint firstItem="vQF-dX-iZG" firstAttribute="leading" secondItem="L1g-Ne-euo" secondAttribute="leading" id="L2I-Ys-nAU"/>
+                                    <constraint firstAttribute="centerY" secondItem="vQF-dX-iZG" secondAttribute="centerY" id="wJt-Qz-Zyq"/>
+                                    <constraint firstAttribute="trailing" secondItem="vQF-dX-iZG" secondAttribute="trailing" id="wwy-Iw-7o0"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
@@ -979,17 +1021,15 @@
                             <constraint firstItem="L1g-Ne-euo" firstAttribute="top" secondItem="yCc-uX-8dU" secondAttribute="top" id="YYL-n2-fVO"/>
                             <constraint firstAttribute="bottom" secondItem="L1g-Ne-euo" secondAttribute="bottom" id="pWB-9j-d79"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="mMJ-nL-bkF"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="backView" destination="mMJ-nL-bkF" id="Nn8-H9-3Pf"/>
+                        <outlet property="definitionLabel" destination="4wE-PJ-k4X" id="GYU-q7-Jjn"/>
                         <outlet property="frontView" destination="L1g-Ne-euo" id="yeG-4n-Gf6"/>
                         <outlet property="mainView" destination="yCc-uX-8dU" id="aTu-dq-vh7"/>
+                        <outlet property="partOfSpeechLabel" destination="Ufh-9k-wO6" id="Ki7-fa-jXp"/>
+                        <outlet property="wordLabel" destination="vQF-dX-iZG" id="fEb-LK-NJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="181-vw-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
