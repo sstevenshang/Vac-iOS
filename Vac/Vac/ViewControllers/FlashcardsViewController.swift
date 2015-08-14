@@ -9,14 +9,15 @@
 import UIKit
 import RealmSwift
 import Mixpanel
+import DOFavoriteButton
 
 class FlashcardsViewController: UIViewController {
 
     @IBOutlet weak var flashCard: UIView!
     
-    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var noButton: DOFavoriteButton!
     
-    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var yesButton: DOFavoriteButton!
     
     @IBOutlet weak var sentenceLabel: UILabel!
     
@@ -32,16 +33,18 @@ class FlashcardsViewController: UIViewController {
     
     }
     
-    @IBAction func noButtonTouched(sender: AnyObject) {
+    @IBAction func noButtonTouched(sender: DOFavoriteButton) {
         checkIfFinished()
         
+        sender.select()
         let mixpanel: Mixpanel = Mixpanel.sharedInstance()
         mixpanel.track("Flashcard Played", properties:["Button": "No"])
     }
     
-    @IBAction func yesButtonTouched(sender: AnyObject) {
+    @IBAction func yesButtonTouched(sender: DOFavoriteButton) {
         checkIfFinished()
         
+        sender.select()
         let mixpanel: Mixpanel = Mixpanel.sharedInstance()
         mixpanel.track("Flashcard Played", properties:["Button": "Yes"])
     }
@@ -106,6 +109,12 @@ class FlashcardsViewController: UIViewController {
         
         child.word = assignWord(wordCount)
         child.handleView()
+        
+        if noButton.selected {
+            noButton.deselect()
+        } else {
+            yesButton.deselect()
+        }
     }
     
     func hideEverything(show: Bool) {

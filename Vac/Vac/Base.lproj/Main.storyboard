@@ -462,7 +462,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QK-GM-S1L" userLabel="NoButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QK-GM-S1L" userLabel="NoButton" customClass="DOFavoriteButton" customModule="DOFavoriteButton">
                                 <rect key="frame" x="200" y="520" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="5s0-6B-yir"/>
@@ -475,7 +475,7 @@
                                     <action selector="noButtonTouched:" destination="SMj-if-czp" eventType="touchUpInside" id="ZNH-Ie-q0N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VH-1W-Ttz" userLabel="YesButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VH-1W-Ttz" userLabel="YesButton" customClass="DOFavoriteButton" customModule="DOFavoriteButton">
                                 <rect key="frame" x="350" y="520" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0sL-sk-Pqj"/>
