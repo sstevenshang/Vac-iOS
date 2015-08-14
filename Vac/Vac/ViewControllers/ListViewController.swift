@@ -24,7 +24,6 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("I got here, dad.")
         let realm = Realm()
         let savedWords = realm.objects(Word)
         
@@ -52,7 +51,7 @@ class ListViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func clear(clearButton: UIButton) {
@@ -98,12 +97,11 @@ class ListViewController: UIViewController {
             wordsShown.removeAll(keepCapacity: false)
             findWords(searchBar.text)
             listTableView.reloadData()
-            println(wordsShown.count)
+
             listTableView.hidden = checkIfEmpty()
             
         } else {
             
-            println("I'M HERE!")
             showAll()
             listTableView.reloadData()
         }
@@ -144,7 +142,6 @@ class ListViewController: UIViewController {
         
         if (segue.identifier == "showListWord") {
             
-            println("hi, dad.")
             let destination : UINavigationController = segue.destinationViewController as! UINavigationController
             let lwvc : ListWordViewController = destination.viewControllers[0] as! ListWordViewController
             lwvc.word = data!
@@ -159,7 +156,6 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        println(words.count)
         return wordsShown.count
         
     }
@@ -173,7 +169,6 @@ extension ListViewController: UITableViewDataSource {
         
         cell.listWord.text = wordOfCell.word
         cell.listDefinition.text = constructDefinition(wordOfCell)
-        println(wordOfCell.word)
         
         return cell
     }
@@ -200,18 +195,3 @@ extension ListViewController: UITextFieldDelegate {
     }
 }
 
-
-/*
-// Override to support rearranging the table view.
-override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-// Return NO if you do not want the item to be re-orderable.
-return true
-}
-*/

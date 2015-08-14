@@ -22,7 +22,6 @@ class RealmHelper {
             realm.add(newWord, update: true)
         }
         
-        println("What did you add to my drink?!")
     }
     
     func deleteRealm(word: String) {
@@ -34,12 +33,10 @@ class RealmHelper {
             realm.delete(oldWord.partOfSpeech)
             realm.delete(oldWord.definitions)
         }
-        println("Got rid of them strings, let's party!")
         
         realm.write {
             realm.delete(oldWord)
         }
-        println("3.2.1.. Sense of humor deleted.")
         
     }
     

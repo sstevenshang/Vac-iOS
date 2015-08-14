@@ -52,7 +52,7 @@ class FlashcardsViewController: UIViewController {
         }
         
         words = shuffle(words)
-        println("got words")
+
     }
     
     var wordCount: Int = 0
@@ -81,8 +81,6 @@ class FlashcardsViewController: UIViewController {
     
     func reloadData() {
         
-        println("again")
-        
         let child = self.childViewControllers[0] as! Flashcard
         
         child.word = assignWord(wordCount)
@@ -103,7 +101,7 @@ class FlashcardsViewController: UIViewController {
             
             if wordCount == 0{
                 getWords()
-                println("warm up!")
+
             }
             
             if words.count != 0 {
@@ -114,7 +112,6 @@ class FlashcardsViewController: UIViewController {
                 
             } else {
                 
-                println("hmmmm?")
                 hideEverything(true)
             }
         }

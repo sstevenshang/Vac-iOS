@@ -55,11 +55,10 @@ class Flashcard: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
         
     func tapped() {
-        println("hayyyy")
         
         if showingFront {
             UIView.transitionFromView(frontView, toView: backView, duration: 0.5, options: .TransitionFlipFromLeft | .ShowHideTransitionViews , completion: nil)

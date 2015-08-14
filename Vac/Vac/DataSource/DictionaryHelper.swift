@@ -14,7 +14,7 @@ class DictionaryHelper: NSObject {
     
     let session = NSURLSession.sharedSession()
     
-    // SEARCH
+    // MARKS: Search
     
     func createURL(key: String, type: String) -> NSURL{
         
@@ -47,7 +47,6 @@ class DictionaryHelper: NSObject {
                 URL = ""
         }
         
-        //println(URL)
         return NSURL(string: URL)!
         
     }

@@ -49,7 +49,6 @@ class ListWordViewController: UIViewController {
         super.viewDidLoad()
         
         handleDefinitionView(word)
-        println(word)
         
         bigSaveButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
     }
@@ -76,7 +75,7 @@ class ListWordViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     func handleDefinitionView(word: Word) {
@@ -142,8 +141,6 @@ class ListWordViewController: UIViewController {
             }
             
             self.bigSaveButton.selected = self.checkWordInRealm(word.word)
-            
-            println("I handled the body, don't worry.")
             
         })
     }

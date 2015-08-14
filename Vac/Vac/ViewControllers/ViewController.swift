@@ -178,19 +178,12 @@ class ViewController: UIViewController {
         
         wordShown = thisWord
         
-        println(thisWord.word)
-        println(thisWord.partOfSpeech)
-        println(thisWord.definitions)
-        println(thisWord.synonyms)
-        println(thisWord.example)
-        
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
             self.firstPartOfSpeech.text = thisWord.partOfSpeech[0]
             self.firstDefinition.text = thisWord.definitions[0]
             
             let numberOfDefinitions = thisWord.partOfSpeech.count
-            println(numberOfDefinitions)
             
             switch numberOfDefinitions {
                 
@@ -245,7 +238,7 @@ class ViewController: UIViewController {
             
             self.bigSaveButton.selected = self.checkWordInRealm(thisWord.word)
             self.definitionView.hidden = false
-            println("I handled the body, don't worry.")
+
             
         })
     }
@@ -299,11 +292,11 @@ extension ViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchResult != nil{
-            println(searchResult!.count)
+
             return searchResult!.count
         }
         else{
-            println(0)
+
             return 0
         }
     }
@@ -318,7 +311,6 @@ extension ViewController: UITableViewDataSource {
             wordCell.wordLabel.text = result
             wordCell.saveButton.selected = checkWordInRealm(result)
             
-            println(result)
         }
         
         return wordCell
