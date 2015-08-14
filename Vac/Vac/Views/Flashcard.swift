@@ -35,10 +35,10 @@ class Flashcard: UIViewController {
         
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.grayColor().CGColor
-        layer.shadowColor = UIColor.whiteColor().CGColor
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 5.0
+        layer.shadowColor = UIColor.blackColor().CGColor
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 3.0
         
         var touch = UITapGestureRecognizer(target:self, action:"tapped")
         mainView.addGestureRecognizer(touch)
