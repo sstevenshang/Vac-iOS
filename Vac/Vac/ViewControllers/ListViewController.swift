@@ -17,6 +17,7 @@ class ListViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UITextField!
     
+    var data: Word?
     var words = [Word]()
     var wordsShown = [Word]()
     
@@ -34,17 +35,19 @@ class ListViewController: UIViewController {
             }
         }
         
+        showAll()
+        
         searchBar.delegate = self
         searchBar.layer.cornerRadius = 15.0
         searchBar.attributedPlaceholder = NSAttributedString (string:"Search!", attributes:[NSForegroundColorAttributeName: UIColor.grayColor()])
-        
         let clearButton = UIButton(frame: CGRectMake(0, 0, 15, 15))
         clearButton.setImage(UIImage(named: "ClearButton")!, forState: UIControlState.Normal)
         searchBar.rightView = clearButton
         clearButton.addTarget(self, action: "clear:", forControlEvents: UIControlEvents.TouchUpInside)
         searchBar.rightViewMode = UITextFieldViewMode.WhileEditing
-        
         searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
+        
         
     }
 
@@ -52,6 +55,14 @@ class ListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func clear(clearButton: UIButton) {
+        
+        searchBar.text = ""
+        showAll()
+        listTableView.reloadData()
+    }
+    
     
     func constructDefinition(aWord: Word) -> String {
         
@@ -78,10 +89,40 @@ class ListViewController: UIViewController {
         return aString
     }
     
+    // MARK: SearchBar
+    
     func textFieldDidChange(searchBar: UITextField) {
         
-
+        if !searchBar.text.isEmpty {
+            
+            wordsShown.removeAll(keepCapacity: false)
+            findWords(searchBar.text)
+            listTableView.reloadData()
+            println(wordsShown.count)
+            
+        } else {
+            
+            println("I'M HERE!")
+            showAll()
+            listTableView.reloadData()
+        }
+    }
+    
+    func showAll() {
         
+        for word in words {
+            wordsShown.append(word)
+        }
+    }
+    
+    func findWords(aString: String) {
+        
+        for word in words {
+            
+            if word.word.lowercaseString.rangeOfString(aString) != nil {
+                wordsShown.append(word)
+            }
+        }
     }
     
     // MARK: Guillotine Menu
@@ -94,11 +135,17 @@ class ListViewController: UIViewController {
             destinationVC.hostNavigationBarHeight = self.navigationController!.navigationBar.frame.size.height
             destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
             destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
+        }
+        
+        if (segue.identifier == "showListWord") {
+            
+            println("hi, dad.")
+            let destination : UINavigationController = segue.destinationViewController as! UINavigationController
+            let lwvc : ListWordViewController = destination.viewControllers[0] as! ListWordViewController
+            lwvc.word = data!
             
         }
     }
-
-    
 }
 
 // MARK: TableView
@@ -108,14 +155,14 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         println(words.count)
-        return words.count
+        return wordsShown.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ListWordCell", forIndexPath: indexPath) as! ListWordCell
-        let wordOfCell = words[indexPath.row]
+        let wordOfCell = wordsShown[indexPath.row]
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
@@ -137,6 +184,14 @@ extension ListViewController: UITextFieldDelegate {
         searchBar.resignFirstResponder()
         return true
         
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        data = wordsShown[indexPath.row]
+        
+        performSegueWithIdentifier("showListWord", sender: tableView.cellForRowAtIndexPath(indexPath))
+
     }
 }
 
