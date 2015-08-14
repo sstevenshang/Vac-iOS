@@ -77,6 +77,8 @@ class Flashcard: UIViewController {
         partOfSpeechLabel.text = constructPartOfSpeech(word!)
         definitionLabel.text = constructDefinition(word!)
         
+        UIView.transitionFromView(backView, toView: frontView, duration: 0, options: .ShowHideTransitionViews , completion: nil)
+        showingFront = true
     }
     
     // MARK: Construction
