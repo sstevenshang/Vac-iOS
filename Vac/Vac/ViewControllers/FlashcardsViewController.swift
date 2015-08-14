@@ -21,26 +21,24 @@ class FlashcardsViewController: UIViewController {
     
     @IBAction func noButtonTouched(sender: AnyObject) {
         checkIfFinished()
-        
     }
     
     @IBAction func yesButtonTouched(sender: AnyObject) {
         checkIfFinished()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getWords()
+        flashCard.hidden = false
         sentenceLabel.hidden = true
-        wordCount = 0
-        
+        yesButton.hidden = false
+        noButton.hidden = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     var words = [Word]()
@@ -63,30 +61,54 @@ class FlashcardsViewController: UIViewController {
     
     var wordCount: Int = 0
     
-    func checkIfFinished() {
+    func checkIfFinished(){
         
-        if wordCount > words.count{
+        if wordCount == (words.count - 1){
             
             flashCard.hidden = true
             sentenceLabel.hidden = false
+            yesButton.hidden = true
+            noButton.hidden = true
+            
             wordCount = 0
             
         } else {
             
             wordCount++
+            reloadData()
         }
     }
-    
-    
-    
-    
-    
-    
     
     func assignWord(wordCount: Int) -> Word{
         
         return words[wordCount]
     }
+    
+    func reloadData() {
+        
+        println("again")
+        
+        let child = self.childViewControllers[0] as! Flashcard
+        child.word = assignWord(wordCount)
+        child.handleView()
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+        if segue.identifier == "childView" {
+            
+            if wordCount == 0{
+                getWords()
+                println("warm up!")
+            }
+            
+            let destination = segue.destinationViewController as! Flashcard
+            destination.word = assignWord(wordCount)
+        }
+    }
+    
+    // MARK: Random
     
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
         let c = count(list)
@@ -96,21 +118,6 @@ class FlashcardsViewController: UIViewController {
             swap(&list[i], &list[j])
         }
         return list
-    }
-    
-    func reloadData() {
-        
-        assignWord()
-        
-        performSegueWithIdentifier("childView", sender: FlashcardsViewController.self)
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
-        if segue.identifier == "childView" {
-            let destination = segue.destinationViewController as! Flashcard
-        }
     }
     
 }

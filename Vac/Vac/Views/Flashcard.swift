@@ -44,6 +44,7 @@ class Flashcard: UIViewController {
         mainView.addGestureRecognizer(touch)
         
         showingFront = true
+        handleView()
     }
     
     var showingFront: Bool = true
@@ -64,6 +65,14 @@ class Flashcard: UIViewController {
             showingFront = true
         }
 
+    }
+    
+    func handleView() {
+        
+        wordLabel.text = word.word
+        partOfSpeechLabel.text = constructPartOfSpeech(word)
+        definitionLabel.text = constructDefinition(word)
+        
     }
     
     // MARK: Construction
