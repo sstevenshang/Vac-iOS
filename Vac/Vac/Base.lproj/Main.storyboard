@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OCe-0e-7VN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SMj-if-czp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -374,7 +374,7 @@
         <!--Study View Controller-->
         <scene sceneID="mDD-3T-GGh">
             <objects>
-                <viewController id="smK-LG-75U" userLabel="Study View Controller" sceneMemberID="viewController">
+                <viewController id="smK-LG-75U" userLabel="Study View Controller" customClass="StudyViewController" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Van-dl-qD3"/>
                         <viewControllerLayoutGuide type="bottom" id="Cz9-BR-sF4"/>
@@ -428,9 +428,16 @@
                                 <state key="normal" image="MenuButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Tlz-ov-QBM" kind="custom" identifier="showMenu" customClass="GuillotineMenuSegue" customModule="Vac" id="etX-1I-vTA"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="3Pk-JQ-hb9" id="9dZ-Lr-DNR"/>
+                        <outlet property="wordsCountLabel" destination="JJ9-jC-XHe" id="SQu-vG-wcN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Da-UY-er1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -439,15 +446,61 @@
         <!--Flashcard View Controller-->
         <scene sceneID="2xl-xC-YVy">
             <objects>
-                <viewController id="SMj-if-czp" userLabel="Flashcard View Controller" sceneMemberID="viewController">
+                <viewController id="SMj-if-czp" userLabel="Flashcard View Controller" customClass="FlashcardsViewController" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WPb-Md-r2U"/>
                         <viewControllerLayoutGuide type="bottom" id="ReX-Sh-gpS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WWW-de-qyd">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've Studied 'em All!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
+                                <rect key="frame" x="212" y="238" width="175.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QK-GM-S1L" userLabel="NoButton">
+                                <rect key="frame" x="200" y="456" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5s0-6B-yir"/>
+                                    <constraint firstAttribute="height" constant="50" id="MRG-zU-xgY"/>
+                                </constraints>
+                                <state key="normal" image="NoButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VH-1W-Ttz" userLabel="YesButton">
+                                <rect key="frame" x="350" y="456" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0sL-sk-Pqj"/>
+                                    <constraint firstAttribute="width" constant="50" id="WiI-as-w22"/>
+                                </constraints>
+                                <state key="normal" image="YesButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sm6-he-MlW">
+                                <rect key="frame" x="30" y="30" width="540" height="396"/>
+                                <connections>
+                                    <segue destination="H6l-sC-vB9" kind="embed" id="lZ7-bQ-MM9"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Sm6-he-MlW" firstAttribute="centerX" secondItem="8QK-GM-S1L" secondAttribute="centerX" constant="75" id="1md-49-fch"/>
+                            <constraint firstAttribute="centerY" secondItem="BAa-j9-PU2" secondAttribute="centerY" constant="20" id="CWL-rp-XCm"/>
+                            <constraint firstAttribute="centerX" secondItem="BAa-j9-PU2" secondAttribute="centerX" id="Rdt-zk-4EV"/>
+                            <constraint firstItem="4VH-1W-Ttz" firstAttribute="centerX" secondItem="Sm6-he-MlW" secondAttribute="centerX" constant="75" id="UDQ-sF-Rfs"/>
+                            <constraint firstItem="Sm6-he-MlW" firstAttribute="leading" secondItem="WWW-de-qyd" secondAttribute="leading" constant="30" id="XtW-Kz-bma"/>
+                            <constraint firstItem="Sm6-he-MlW" firstAttribute="top" secondItem="WPb-Md-r2U" secondAttribute="bottom" constant="30" id="aje-Ei-zxD"/>
+                            <constraint firstItem="4VH-1W-Ttz" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="30" id="ekZ-Ot-gA9"/>
+                            <constraint firstItem="ReX-Sh-gpS" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="110" id="hnp-gs-uxA"/>
+                            <constraint firstAttribute="trailing" secondItem="Sm6-he-MlW" secondAttribute="trailing" constant="30" id="nPq-Pe-UgA"/>
+                            <constraint firstItem="8QK-GM-S1L" firstAttribute="top" secondItem="Sm6-he-MlW" secondAttribute="bottom" constant="30" id="qwr-2w-amB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="70E-ZP-zX8">
                         <barButtonItem key="leftBarButtonItem" id="4Vr-NY-Ghe">
@@ -464,6 +517,12 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flashCard" destination="Sm6-he-MlW" id="Ekl-G1-Izh"/>
+                        <outlet property="noButton" destination="8QK-GM-S1L" id="BGB-0x-dDR"/>
+                        <outlet property="sentenceLabel" destination="BAa-j9-PU2" id="1jk-SV-iam"/>
+                        <outlet property="yesButton" destination="4VH-1W-Ttz" id="eDK-H1-Qq0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZhG-sf-qCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -728,7 +787,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poop! Nothing Found." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfF-co-GBx">
-                                <rect key="frame" x="216" y="290" width="169" height="20.5"/>
+                                <rect key="frame" x="216" y="270" width="169" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -783,7 +842,7 @@
                         <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Rt5-nn-pdO" firstAttribute="leading" secondItem="nQK-47-ben" secondAttribute="leading" id="8d7-YB-tNl"/>
-                            <constraint firstAttribute="centerY" secondItem="XfF-co-GBx" secondAttribute="centerY" id="Ckh-zt-tGI"/>
+                            <constraint firstAttribute="centerY" secondItem="XfF-co-GBx" secondAttribute="centerY" constant="20" id="Ckh-zt-tGI"/>
                             <constraint firstItem="dFI-nF-n9O" firstAttribute="top" secondItem="Rt5-nn-pdO" secondAttribute="bottom" id="Urd-CB-Ahv"/>
                             <constraint firstAttribute="trailing" secondItem="Rt5-nn-pdO" secondAttribute="trailing" id="faw-YP-HwV"/>
                             <constraint firstAttribute="centerX" secondItem="XfF-co-GBx" secondAttribute="centerX" id="kZS-mb-u1c"/>
@@ -888,6 +947,55 @@
             </objects>
             <point key="canvasLocation" x="1959" y="3252"/>
         </scene>
+        <!--Flashcard-->
+        <scene sceneID="Iy4-07-aJT">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="H6l-sC-vB9" customClass="Flashcard" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2BU-HH-cFj"/>
+                        <viewControllerLayoutGuide type="bottom" id="7dG-aD-AS7"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yCc-uX-8dU">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="396"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMJ-nL-bkF" userLabel="Back">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="396"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1g-Ne-euo" userLabel="Front">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="396"/>
+                                <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="L1g-Ne-euo" secondAttribute="trailing" id="1Q4-xv-IOy"/>
+                            <constraint firstAttribute="trailing" secondItem="mMJ-nL-bkF" secondAttribute="trailing" id="7do-79-oIu"/>
+                            <constraint firstAttribute="bottom" secondItem="mMJ-nL-bkF" secondAttribute="bottom" id="Ibx-R4-MD5"/>
+                            <constraint firstItem="mMJ-nL-bkF" firstAttribute="leading" secondItem="yCc-uX-8dU" secondAttribute="leading" id="NwH-KM-Tpz"/>
+                            <constraint firstItem="mMJ-nL-bkF" firstAttribute="top" secondItem="yCc-uX-8dU" secondAttribute="top" id="U9q-de-9SF"/>
+                            <constraint firstItem="L1g-Ne-euo" firstAttribute="leading" secondItem="yCc-uX-8dU" secondAttribute="leading" id="X0Z-oH-NYV"/>
+                            <constraint firstItem="L1g-Ne-euo" firstAttribute="top" secondItem="yCc-uX-8dU" secondAttribute="top" id="YYL-n2-fVO"/>
+                            <constraint firstAttribute="bottom" secondItem="L1g-Ne-euo" secondAttribute="bottom" id="pWB-9j-d79"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mMJ-nL-bkF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="backView" destination="mMJ-nL-bkF" id="Nn8-H9-3Pf"/>
+                        <outlet property="frontView" destination="L1g-Ne-euo" id="yeG-4n-Gf6"/>
+                        <outlet property="mainView" destination="yCc-uX-8dU" id="aTu-dq-vh7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="181-vw-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3370" y="3252"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BackButton" width="100" height="100"/>
@@ -896,12 +1004,14 @@
         <image name="GoButton" width="300" height="300"/>
         <image name="ListButton" width="100" height="100"/>
         <image name="MenuButton" width="21" height="15"/>
+        <image name="NoButton" width="200" height="200"/>
         <image name="SaveButton" width="30" height="30"/>
         <image name="StudyButton" width="100" height="100"/>
+        <image name="YesButton" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RlX-wY-HRt"/>
-        <segue reference="zp1-eZ-iTZ"/>
         <segue reference="D1R-f6-O2z"/>
+        <segue reference="etX-1I-vTA"/>
     </inferredMetricsTieBreakers>
 </document>

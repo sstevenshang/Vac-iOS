@@ -23,6 +23,9 @@
 		A4686CBD1B5DF43700403429 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CB91B5DF43700403429 /* UIViewExtension.swift */; };
 		A4686CC01B5DF46000403429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4686CBF1B5DF46000403429 /* ViewController.swift */; };
 		A47B2A931B7D200400621777 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47B2A921B7D200400621777 /* CustomSegue.swift */; };
+		A483B4BA1B7DF495001BF265 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B4B91B7DF495001BF265 /* Flashcard.swift */; };
+		A49E29791B7DDF4100EAA177 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E29781B7DDF4100EAA177 /* StudyViewController.swift */; };
+		A49E297B1B7DDF5100EAA177 /* FlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E297A1B7DDF5100EAA177 /* FlashcardsViewController.swift */; };
 		A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */; };
 		A4AA9AB11B5E23AC00CE09AE /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */; };
 		A4AA9AB51B5EE68600CE09AE /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */; };
@@ -66,6 +69,9 @@
 		A4686CB91B5DF43700403429 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A4686CBF1B5DF46000403429 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A47B2A921B7D200400621777 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		A483B4B91B7DF495001BF265 /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
+		A49E29781B7DDF4100EAA177 /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
+		A49E297A1B7DDF5100EAA177 /* FlashcardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardsViewController.swift; sourceTree = "<group>"; };
 		A4A2F5811B62D357005BFFC2 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryHelper.swift; sourceTree = "<group>"; };
 		A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		A4AA9AB41B5EE68600CE09AE /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +193,8 @@
 				A4AA9AB01B5E23AC00CE09AE /* NavigationBarController.swift */,
 				A4B010481B7B1FF90036D3DB /* ListViewController.swift */,
 				A4C2BAA71B7BCB7800053424 /* ListWordViewController.swift */,
+				A49E29781B7DDF4100EAA177 /* StudyViewController.swift */,
+				A49E297A1B7DDF5100EAA177 /* FlashcardsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 			children = (
 				A4F102481B63144400B9B5AF /* WordCell.swift */,
 				A4B0104C1B7B29BB0036D3DB /* ListWordCell.swift */,
+				A483B4B91B7DF495001BF265 /* Flashcard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,10 +398,13 @@
 				A4686CBB1B5DF43700403429 /* GuillotineMenuTransitionAnimation.swift in Sources */,
 				A4ED1E061B79C4810062BEE7 /* FormatString.swift in Sources */,
 				A4ED1E081B7A98320062BEE7 /* WordStruct.swift in Sources */,
+				A49E29791B7DDF4100EAA177 /* StudyViewController.swift in Sources */,
 				A4686C961B5DF3A100403429 /* AppDelegate.swift in Sources */,
 				A43560A91B7AA8F900F0D31D /* RealmHelper.swift in Sources */,
 				A4A2F5821B62D357005BFFC2 /* DictionaryHelper.swift in Sources */,
+				A483B4BA1B7DF495001BF265 /* Flashcard.swift in Sources */,
 				A4F102491B63144400B9B5AF /* WordCell.swift in Sources */,
+				A49E297B1B7DDF5100EAA177 /* FlashcardsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
