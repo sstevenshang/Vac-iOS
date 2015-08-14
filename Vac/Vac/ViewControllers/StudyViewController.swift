@@ -15,7 +15,10 @@ class StudyViewController: UIViewController {
     
     @IBOutlet weak var wordsCountLabel: UILabel!
     
+    @IBOutlet weak var goButton: UIButton!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let realm = Realm()
