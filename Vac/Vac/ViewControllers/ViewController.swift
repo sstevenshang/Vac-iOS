@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import RealmSwift
 import DOFavoriteButton
+import Mixpanel
 
 class ViewController: UIViewController {
 
@@ -82,6 +83,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Dictionary launched")
+        
 //        let realm = Realm()
 //        realm.write{
 //            self.realm.deleteAll()
@@ -101,6 +105,10 @@ class ViewController: UIViewController {
         searchBar.text = ""
         resultTableView.hidden = true
         definitionView.hidden = true
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("ClearButton pressed")
+
     }
     
     let dictionary = DictionaryHelper()
@@ -149,14 +157,18 @@ class ViewController: UIViewController {
         if sender.selected {
             // deselect
             sender.deselect()
-            
             realmHelper.deleteRealm(wordShown.word)
             
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Deleted word", properties:["Button": "Dictionary page"])
+
         } else {
             // select with animation
             sender.select()
-            
             realmHelper.writeRealm(wordShown)
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Saved word", properties:["Button": "Dictionary page"])
         }
     }
     
@@ -279,8 +291,6 @@ class ViewController: UIViewController {
             destinationVC.view.backgroundColor = self.navigationController!.navigationBar.barTintColor
             destinationVC.setMenuButtonWithImage(menuButton.imageView!.image!)
             
-            
-            
         }
     }
 }
@@ -320,6 +330,9 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Clicked on cell", properties:["View controller": "Dictionary"])
         
         self.topConstraintOfExampleTitle.constant = 20
         self.topConstraintOfThirdPartOfSpeech.constant = 15

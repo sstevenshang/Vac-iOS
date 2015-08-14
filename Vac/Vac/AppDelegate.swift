@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-        //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-
+        
+        Mixpanel.sharedInstanceWithToken("3c8b4c742be458aa4741c833c1eb1be2")
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("App launched")
+        
         return true
     }
 

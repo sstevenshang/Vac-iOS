@@ -9,6 +9,7 @@
 import UIKit
 import DOFavoriteButton
 import RealmSwift
+import Mixpanel
 
 class ListWordViewController: UIViewController {
     
@@ -50,6 +51,9 @@ class ListWordViewController: UIViewController {
         
         handleDefinitionView(word)
         
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("List Word launched")
+        
         bigSaveButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
     }
 
@@ -59,15 +63,19 @@ class ListWordViewController: UIViewController {
         if sender.selected {
             // deselect
             sender.deselect()
-            
             realmHelper.deleteRealm(word.word)
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Deleted word", properties:["Button":"List Word page"])
             
         } else {
             // select with animation
             sender.select()
-            
             let aWordStruct = turnWordIntoWordStruct(word)
             realmHelper.writeRealm(aWordStruct)
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Saved word", properties:["Button":"List Word page"])
         }
     }
 

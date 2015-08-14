@@ -1050,8 +1050,8 @@
         <image name="YesButton" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zp1-eZ-iTZ"/>
-        <segue reference="RlX-wY-HRt"/>
         <segue reference="D1R-f6-O2z"/>
+        <segue reference="ox5-GP-6BS"/>
+        <segue reference="RlX-wY-HRt"/>
     </inferredMetricsTieBreakers>
 </document>

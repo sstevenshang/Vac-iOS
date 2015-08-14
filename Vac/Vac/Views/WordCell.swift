@@ -8,6 +8,7 @@
 
 import UIKit
 import DOFavoriteButton
+import Mixpanel
 
 class WordCell: UITableViewCell {
 
@@ -21,8 +22,6 @@ class WordCell: UITableViewCell {
         super.awakeFromNib()
         
         saveButton.addTarget(self, action: Selector("tapped:"), forControlEvents: .TouchUpInside)
-        
-        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -40,12 +39,17 @@ class WordCell: UITableViewCell {
         if sender.selected {
             
             sender.deselect()
-
             realmHelper.deleteRealm(word)
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Deleted word", properties:["Button": "Cell"])
             
         } else {
             
             sender.select()
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Saved word", properties:["Button": "Cell"])
             
             if wordSaved.word != word {
 

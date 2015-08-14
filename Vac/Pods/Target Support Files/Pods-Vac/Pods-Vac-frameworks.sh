@@ -53,12 +53,14 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-Vac/DOFavoriteButton.framework'
+  install_framework 'Pods-Vac/Mixpanel.framework'
   install_framework 'Pods-Vac/Realm.framework'
   install_framework 'Pods-Vac/RealmSwift.framework'
   install_framework 'Pods-Vac/SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-Vac/DOFavoriteButton.framework'
+  install_framework 'Pods-Vac/Mixpanel.framework'
   install_framework 'Pods-Vac/Realm.framework'
   install_framework 'Pods-Vac/RealmSwift.framework'
   install_framework 'Pods-Vac/SwiftyJSON.framework'

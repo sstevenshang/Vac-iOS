@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mixpanel
 
 class GuillotineMenuViewController: UIViewController {
     
@@ -52,6 +53,9 @@ class GuillotineMenuViewController: UIViewController {
 // MARK: Actions
     func closeMenuButtonTapped() {
         self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Dismissed menu")
         
     }
     

@@ -1,5 +1,8 @@
 PODS:
   - DOFavoriteButton (0.0.4)
+  - Mixpanel (2.8.2):
+    - Mixpanel/Mixpanel (= 2.8.2)
+  - Mixpanel/Mixpanel (2.8.2)
   - Realm (0.94.0):
     - Realm/Headers (= 0.94.0)
   - Realm/Headers (0.94.0)
@@ -9,11 +12,13 @@ PODS:
 
 DEPENDENCIES:
   - DOFavoriteButton
+  - Mixpanel
   - RealmSwift
   - SwiftyJSON (~> 2.2.0)
 
 SPEC CHECKSUMS:
   DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
+  Mixpanel: f4d71ac2a306e7cda6ad03d4a2be249a0fd7a967
   Realm: a046149653e0ca220b65b5783da907aa5b74d86c
   RealmSwift: 5efbbf1a5c179a7237e4d428594e41619fa167ba
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c

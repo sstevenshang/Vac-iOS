@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Mixpanel
 
 class FlashcardsViewController: UIViewController {
 
@@ -21,15 +22,23 @@ class FlashcardsViewController: UIViewController {
     
     @IBAction func noButtonTouched(sender: AnyObject) {
         checkIfFinished()
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Flashcard Played", properties:["Button": "No"])
     }
     
     @IBAction func yesButtonTouched(sender: AnyObject) {
         checkIfFinished()
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Flashcard Played", properties:["Button": "Yes"])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Flashcard Launched")
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +75,9 @@ class FlashcardsViewController: UIViewController {
             yesButton.hidden = true
             noButton.hidden = true
             wordCount = 0
+            
+            let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+            mixpanel.track("Finished all flashcards")
             
         } else {
             

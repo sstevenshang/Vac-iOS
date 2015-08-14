@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Mixpanel
 
 class ListViewController: UIViewController {
 
@@ -23,6 +24,9 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("List Launched")
         
         let realm = Realm()
         let savedWords = realm.objects(Word)
@@ -55,6 +59,9 @@ class ListViewController: UIViewController {
     }
     
     func clear(clearButton: UIButton) {
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("ClearButton Pressed")
         
         searchBar.text = ""
         showAll()
@@ -189,6 +196,9 @@ extension ListViewController: UITextFieldDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         data = wordsShown[indexPath.row]
+        
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Clicked on cell", properties:["View controller":"List"])
         
         performSegueWithIdentifier("showListWord", sender: tableView.cellForRowAtIndexPath(indexPath))
 
