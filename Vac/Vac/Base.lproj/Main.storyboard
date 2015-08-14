@@ -384,7 +384,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMn-wM-u9w">
-                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <rect key="frame" x="200" y="180" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="S96-FY-nuB"/>
                                     <constraint firstAttribute="width" constant="200" id="g7H-Yd-QaZ"/>
@@ -397,13 +397,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Got 200 Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJ9-jC-XHe">
-                                <rect key="frame" x="226" y="159" width="149" height="20.5"/>
+                                <rect key="frame" x="226" y="139" width="149" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press GO to Study 'em" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM1-jk-nMR">
-                                <rect key="frame" x="211.5" y="420" width="177" height="20.5"/>
+                                <rect key="frame" x="211.5" y="400" width="177" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -412,7 +412,7 @@
                         <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="qMn-wM-u9w" secondAttribute="centerX" id="0Ja-kz-uGc"/>
-                            <constraint firstAttribute="centerY" secondItem="qMn-wM-u9w" secondAttribute="centerY" id="0tN-wj-glw"/>
+                            <constraint firstAttribute="centerY" secondItem="qMn-wM-u9w" secondAttribute="centerY" constant="20" id="0tN-wj-glw"/>
                             <constraint firstItem="rM1-jk-nMR" firstAttribute="top" secondItem="qMn-wM-u9w" secondAttribute="bottom" constant="20" id="DZX-Jx-P9Y"/>
                             <constraint firstItem="qMn-wM-u9w" firstAttribute="top" secondItem="JJ9-jC-XHe" secondAttribute="bottom" constant="20" id="e8l-Mc-pwM"/>
                             <constraint firstItem="qMn-wM-u9w" firstAttribute="centerX" secondItem="JJ9-jC-XHe" secondAttribute="centerX" id="o9h-3T-5kp"/>
@@ -455,8 +455,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've Studied 'em All!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
-                                <rect key="frame" x="212" y="238" width="175.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Woo! No Way! You Finished All?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAa-j9-PU2">
+                                <rect key="frame" x="179" y="238" width="242" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>

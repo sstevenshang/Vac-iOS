@@ -47,8 +47,7 @@ class ListViewController: UIViewController {
         searchBar.rightViewMode = UITextFieldViewMode.WhileEditing
         searchBar.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
-        
-        
+        listTableView.hidden = checkIfEmpty()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,8 +60,9 @@ class ListViewController: UIViewController {
         searchBar.text = ""
         showAll()
         listTableView.reloadData()
+        listTableView.hidden = checkIfEmpty()
+
     }
-    
     
     func constructDefinition(aWord: Word) -> String {
         
@@ -99,6 +99,7 @@ class ListViewController: UIViewController {
             findWords(searchBar.text)
             listTableView.reloadData()
             println(wordsShown.count)
+            listTableView.hidden = checkIfEmpty()
             
         } else {
             
@@ -123,6 +124,10 @@ class ListViewController: UIViewController {
                 wordsShown.append(word)
             }
         }
+    }
+    
+    func checkIfEmpty() -> Bool{
+        return (wordsShown.count == 0)
     }
     
     // MARK: Guillotine Menu

@@ -28,7 +28,7 @@ class Flashcard: UIViewController {
         return mainView.layer
     }
     
-    var word: Word!
+    var word: Word?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,11 @@ class Flashcard: UIViewController {
         mainView.addGestureRecognizer(touch)
         
         showingFront = true
-        handleView()
+        
+        if word != nil{
+            handleView()
+        }
+        
     }
     
     var showingFront: Bool = true
@@ -69,9 +73,9 @@ class Flashcard: UIViewController {
     
     func handleView() {
         
-        wordLabel.text = word.word
-        partOfSpeechLabel.text = constructPartOfSpeech(word)
-        definitionLabel.text = constructDefinition(word)
+        wordLabel.text = word!.word
+        partOfSpeechLabel.text = constructPartOfSpeech(word!)
+        definitionLabel.text = constructDefinition(word!)
         
     }
     

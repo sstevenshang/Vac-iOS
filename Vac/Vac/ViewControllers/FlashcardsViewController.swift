@@ -30,10 +30,6 @@ class FlashcardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        flashCard.hidden = false
-        sentenceLabel.hidden = true
-        yesButton.hidden = false
-        noButton.hidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +65,6 @@ class FlashcardsViewController: UIViewController {
             sentenceLabel.hidden = false
             yesButton.hidden = true
             noButton.hidden = true
-            
             wordCount = 0
             
         } else {
@@ -89,9 +84,17 @@ class FlashcardsViewController: UIViewController {
         println("again")
         
         let child = self.childViewControllers[0] as! Flashcard
+        
         child.word = assignWord(wordCount)
         child.handleView()
+    }
+    
+    func hideEverything(show: Bool) {
         
+        flashCard.hidden = show
+        sentenceLabel.hidden = !show
+        yesButton.hidden = show
+        noButton.hidden = show
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -103,8 +106,17 @@ class FlashcardsViewController: UIViewController {
                 println("warm up!")
             }
             
-            let destination = segue.destinationViewController as! Flashcard
-            destination.word = assignWord(wordCount)
+            if words.count != 0 {
+                
+                let destination = segue.destinationViewController as! Flashcard
+                destination.word = assignWord(wordCount)
+                hideEverything(false)
+                
+            } else {
+                
+                println("hmmmm?")
+                hideEverything(true)
+            }
         }
     }
     
