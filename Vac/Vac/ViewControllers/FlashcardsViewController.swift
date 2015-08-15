@@ -83,6 +83,8 @@ class FlashcardsViewController: UIViewController {
     
     func checkIfFinished(){
         
+        println("lol")
+        
         if wordCount == (words.count - 1){
             
             hideEverything(true)
@@ -110,11 +112,6 @@ class FlashcardsViewController: UIViewController {
         child.word = assignWord(wordCount)
         child.handleView()
         
-        if noButton.selected {
-            noButton.deselect()
-        } else {
-            yesButton.deselect()
-        }
     }
     
     func hideEverything(show: Bool) {
