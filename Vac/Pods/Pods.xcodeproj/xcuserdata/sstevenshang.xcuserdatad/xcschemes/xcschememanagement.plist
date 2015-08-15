@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BubbleTransition.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DOFavoriteButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2EEDC481196243AD4EDCFB0BEDF4FE02</key>
+		<key>340A217A0BD4EA13ED1D80550990FCEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E750DE714FD3A9E2AE3A046E05581C1</key>
+		<key>6B38778C1A751293AD397D6ADB7F4D8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC83D8313044AA64760A50B989315493</key>
+		<key>949DE2EB5C0844E22246137A5404E739</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC7A477D15EDC3AE8F60140B5392B608</key>
+		<key>DB3228C706BD53C188266D33E1505E3B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E7722D913F3CED0D4FD17F095277AF20</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,4 +8,5 @@ target 'Vac' do
     pod 'RealmSwift'
     pod 'DOFavoriteButton'
     pod 'Mixpanel'
+    pod 'BubbleTransition', '~> 0.1'
 end

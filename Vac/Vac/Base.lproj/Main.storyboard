@@ -297,6 +297,59 @@
             </objects>
             <point key="canvasLocation" x="1219" y="1114"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="dM2-65-HDW">
+            <objects>
+                <viewController id="VPX-DK-MFl" userLabel="About View Controller" customClass="AboutViewController" customModule="Vac" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sLJ-t9-Ehl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rqt-lT-abR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lMj-ac-DzA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvX-9i-SlH">
+                                <rect key="frame" x="270" y="410" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="gIG-Af-j2e"/>
+                                    <constraint firstAttribute="width" constant="60" id="rUE-44-68t"/>
+                                </constraints>
+                                <state key="normal" image="GoBackButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBackButtonPressed:" destination="VPX-DK-MFl" eventType="touchUpInside" id="IlZ-xf-Ifw"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RN-PY-asz">
+                                <rect key="frame" x="20" y="40" width="560" height="350"/>
+                                <color key="backgroundColor" red="0.14117647058823529" green="0.14509803921568629" blue="0.15294117647058825" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14117647707462311" green="0.14509803056716919" blue="0.15294115245342255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4RN-PY-asz" secondAttribute="trailing" constant="20" id="4H9-R3-l3o"/>
+                            <constraint firstItem="4RN-PY-asz" firstAttribute="leading" secondItem="lMj-ac-DzA" secondAttribute="leading" constant="20" id="GtL-ZC-Wdb"/>
+                            <constraint firstItem="4RN-PY-asz" firstAttribute="top" secondItem="sLJ-t9-Ehl" secondAttribute="bottom" constant="20" id="Jek-MF-dHR"/>
+                            <constraint firstAttribute="centerY" secondItem="QvX-9i-SlH" secondAttribute="centerY" constant="-140" id="Pgp-r6-6l6"/>
+                            <constraint firstItem="QvX-9i-SlH" firstAttribute="top" secondItem="4RN-PY-asz" secondAttribute="bottom" constant="20" id="dJW-hf-7ja"/>
+                            <constraint firstAttribute="centerX" secondItem="QvX-9i-SlH" secondAttribute="centerX" id="ead-7h-FHT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutText" destination="4RN-PY-asz" id="hiV-id-xeM"/>
+                        <outlet property="goBackButton" destination="QvX-9i-SlH" id="EDK-Vn-TQg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="538-pQ-4pi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="1852"/>
+        </scene>
         <!--Menu Controller-->
         <scene sceneID="LTX-Tm-QUg">
             <objects>
@@ -316,7 +369,7 @@
                                     <constraint firstAttribute="width" constant="150" id="SX3-cd-Om4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-101" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="13" minY="13" maxX="113" maxY="13"/>
                                 <state key="normal" title="list" image="ListButton"/>
                                 <connections>
@@ -345,14 +398,28 @@
                                     <constraint firstAttribute="height" constant="50" id="EcM-jn-c8I"/>
                                     <constraint firstAttribute="width" constant="150" id="xAC-s4-1kV"/>
                                 </constraints>
-                                <inset key="titleEdgeInsets" minX="-81" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="-77" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="13" minY="13" maxX="113" maxY="13"/>
                                 <state key="normal" title="study" image="StudyButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="CGG-Ps-W7j" kind="presentation" modalTransitionStyle="crossDissolve" id="QDt-7l-pFt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ive-LQ-HO5">
+                                <rect key="frame" x="225" y="415" width="150" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="0zT-SA-IP5"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZeN-hh-Zis"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="-75" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="13" minY="13" maxX="113" maxY="13"/>
+                                <state key="normal" title="about" image="InfoButton"/>
+                                <connections>
+                                    <segue destination="VPX-DK-MFl" kind="show" identifier="showAbout" id="O6U-Rb-Fas"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -361,11 +428,16 @@
                             <constraint firstItem="7nv-uC-JQP" firstAttribute="top" secondItem="AdM-Np-eey" secondAttribute="bottom" constant="20" id="7hp-yB-iFS"/>
                             <constraint firstItem="AdM-Np-eey" firstAttribute="top" secondItem="TRY-ym-Npg" secondAttribute="bottom" constant="20" id="9dd-vI-nVJ"/>
                             <constraint firstItem="7nv-uC-JQP" firstAttribute="leading" secondItem="AdM-Np-eey" secondAttribute="leading" id="V3c-SX-6sd"/>
+                            <constraint firstItem="Ive-LQ-HO5" firstAttribute="leading" secondItem="7nv-uC-JQP" secondAttribute="leading" id="drx-0Y-DQh"/>
                             <constraint firstAttribute="centerX" secondItem="AdM-Np-eey" secondAttribute="centerX" id="eL7-FE-TrA"/>
                             <constraint firstItem="AdM-Np-eey" firstAttribute="leading" secondItem="TRY-ym-Npg" secondAttribute="leading" id="oJB-nJ-rTS"/>
                             <constraint firstAttribute="centerY" secondItem="AdM-Np-eey" secondAttribute="centerY" id="psH-8K-B1J"/>
+                            <constraint firstItem="Ive-LQ-HO5" firstAttribute="top" secondItem="7nv-uC-JQP" secondAttribute="bottom" constant="20" id="x3O-n3-TXw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aboutButton" destination="Ive-LQ-HO5" id="Gi1-B6-mzO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8x3-Uh-NPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1067,7 +1139,9 @@
         <image name="BackButton" width="100" height="100"/>
         <image name="BigStarButton" width="64" height="64"/>
         <image name="DictionaryButton" width="100" height="100"/>
+        <image name="GoBackButton" width="300" height="300"/>
         <image name="GoButton" width="300" height="300"/>
+        <image name="InfoButton" width="100" height="100"/>
         <image name="ListButton" width="100" height="100"/>
         <image name="MenuButton" width="21" height="15"/>
         <image name="NoButton" width="200" height="200"/>

@@ -8,13 +8,14 @@
 
 import UIKit
 import Mixpanel
+import BubbleTransition
 
-class GuillotineMenuViewController: UIViewController {
+class GuillotineMenuViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     var hostNavigationBarHeight: CGFloat!
-    
-//    var showSearchBar: Bool!
 
+    @IBOutlet weak var aboutButton: UIButton!
+    
     var menuButton: UIButton!
     var menuButtonLeadingConstraint: NSLayoutConstraint!
     var menuButtonTopConstraint: NSLayoutConstraint!
@@ -50,7 +51,8 @@ class GuillotineMenuViewController: UIViewController {
         }
     }
     
-// MARK: Actions
+    // MARK: Actions
+    
     func closeMenuButtonTapped() {
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -81,12 +83,41 @@ class GuillotineMenuViewController: UIViewController {
         
     }
     
-// MARK: MyCustomization
+    // MARK: MyCustomization
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
 
+    // MARK: About
+    
+    let transition = BubbleTransition()
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showAbout" {
+            if let controller = segue.destinationViewController as? UIViewController {
+                controller.transitioningDelegate = self
+                controller.modalPresentationStyle = .Custom
+            }
+        }
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Present
+        transition.startingPoint = aboutButton.center
+        transition.bubbleColor = UIColor(white: 0.14, alpha: 1.0)
+        return transition
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .Dismiss
+        transition.startingPoint = aboutButton.center
+        transition.bubbleColor = UIColor(white: 0.14, alpha: 1.0)
+        return transition
+    }
+    
 }
 
 extension GuillotineMenuViewController: GuillotineAnimationProtocol {
@@ -102,3 +133,4 @@ extension GuillotineMenuViewController: GuillotineAnimationProtocol {
     }
     
 }
+
