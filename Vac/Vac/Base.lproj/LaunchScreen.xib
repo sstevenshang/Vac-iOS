@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,31 +18,38 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigAssLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vsJ-n5-ji6">
-                    <rect key="frame" x="90" y="70" width="300" height="300"/>
-                    <color key="backgroundColor" red="0.023529411764705882" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="90" y="145.5" width="300" height="129"/>
                     <constraints>
+                        <constraint firstAttribute="width" secondItem="vsJ-n5-ji6" secondAttribute="height" multiplier="389:167" id="2jz-24-XFb"/>
                         <constraint firstAttribute="width" constant="300" id="FIe-ZL-pYQ"/>
+                        <constraint firstAttribute="width" constant="300" id="UTm-LH-EMJ"/>
                         <constraint firstAttribute="height" constant="300" id="n7c-m2-r0n"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="FIe-ZL-pYQ"/>
+                            <exclude reference="n7c-m2-r0n"/>
+                        </mask>
+                    </variation>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OrgangeStar" translatesAutoresizingMaskIntoConstraints="NO" id="XL8-GC-CD8">
-                    <rect key="frame" x="220" y="50" width="40" height="40"/>
+                    <rect key="frame" x="126.5" y="75.5" width="35" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="PzI-uy-Wy9"/>
-                        <constraint firstAttribute="width" constant="40" id="Wgz-PY-QX0"/>
+                        <constraint firstAttribute="height" constant="35" id="PzI-uy-Wy9"/>
+                        <constraint firstAttribute="width" constant="35" id="Wgz-PY-QX0"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.047058823529411764" green="0.047058823529411764" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="vsJ-n5-ji6" secondAttribute="centerY" constant="20" id="5Eo-Yu-7bR"/>
-                <constraint firstItem="vsJ-n5-ji6" firstAttribute="top" secondItem="XL8-GC-CD8" secondAttribute="bottom" constant="-20" id="5xv-kX-eth"/>
+                <constraint firstAttribute="centerY" secondItem="vsJ-n5-ji6" secondAttribute="centerY" constant="30" id="5Eo-Yu-7bR"/>
+                <constraint firstItem="vsJ-n5-ji6" firstAttribute="top" secondItem="XL8-GC-CD8" secondAttribute="bottom" constant="35" id="5xv-kX-eth"/>
                 <constraint firstItem="XL8-GC-CD8" firstAttribute="top" secondItem="vsJ-n5-ji6" secondAttribute="bottom" constant="25" id="Geq-ii-uLE"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="vsJ-n5-ji6" secondAttribute="centerX" id="R9s-fa-Qyg"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstItem="vsJ-n5-ji6" firstAttribute="centerX" secondItem="XL8-GC-CD8" secondAttribute="centerX" id="pjI-yk-yqF"/>
+                <constraint firstItem="vsJ-n5-ji6" firstAttribute="centerX" secondItem="XL8-GC-CD8" secondAttribute="centerX" constant="96" id="pjI-yk-yqF"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -54,7 +62,7 @@
         </view>
     </objects>
     <resources>
-        <image name="BigAssLogo" width="1024" height="1024"/>
+        <image name="BigAssLogo" width="778" height="334"/>
         <image name="OrgangeStar" width="800" height="800"/>
     </resources>
 </document>
