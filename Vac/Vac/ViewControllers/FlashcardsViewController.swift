@@ -27,10 +27,12 @@ class FlashcardsViewController: UIViewController {
     
     @IBAction func replayButtonTouched(sender: AnyObject) {
         
-        words = shuffle(words)
-        hideEverything(false)
-        reloadData()
-    
+        if !words.isEmpty {
+            
+            words = shuffle(words)
+            hideEverything(false)
+            reloadData()
+        }
     }
     
     @IBAction func noButtonTouched(sender: DOFavoriteButton) {

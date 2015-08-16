@@ -363,7 +363,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdM-Np-eey">
-                                <rect key="frame" x="225" y="275" width="150" height="50"/>
+                                <rect key="frame" x="225" y="255" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="A59-4k-VtI"/>
                                     <constraint firstAttribute="width" constant="150" id="SX3-cd-Om4"/>
@@ -377,7 +377,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRY-ym-Npg">
-                                <rect key="frame" x="225" y="205" width="150" height="50"/>
+                                <rect key="frame" x="225" y="185" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AMl-9U-6U3"/>
                                     <constraint firstAttribute="width" constant="150" id="eRm-o2-JK9"/>
@@ -393,7 +393,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nv-uC-JQP">
-                                <rect key="frame" x="225" y="345" width="150" height="50"/>
+                                <rect key="frame" x="225" y="325" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="EcM-jn-c8I"/>
                                     <constraint firstAttribute="width" constant="150" id="xAC-s4-1kV"/>
@@ -409,7 +409,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ive-LQ-HO5">
-                                <rect key="frame" x="225" y="415" width="150" height="50"/>
+                                <rect key="frame" x="225" y="395" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="0zT-SA-IP5"/>
                                     <constraint firstAttribute="height" constant="50" id="ZeN-hh-Zis"/>
@@ -431,7 +431,7 @@
                             <constraint firstItem="Ive-LQ-HO5" firstAttribute="leading" secondItem="7nv-uC-JQP" secondAttribute="leading" id="drx-0Y-DQh"/>
                             <constraint firstAttribute="centerX" secondItem="AdM-Np-eey" secondAttribute="centerX" id="eL7-FE-TrA"/>
                             <constraint firstItem="AdM-Np-eey" firstAttribute="leading" secondItem="TRY-ym-Npg" secondAttribute="leading" id="oJB-nJ-rTS"/>
-                            <constraint firstAttribute="centerY" secondItem="AdM-Np-eey" secondAttribute="centerY" id="psH-8K-B1J"/>
+                            <constraint firstAttribute="centerY" secondItem="AdM-Np-eey" secondAttribute="centerY" constant="20" id="psH-8K-B1J"/>
                             <constraint firstItem="Ive-LQ-HO5" firstAttribute="top" secondItem="7nv-uC-JQP" secondAttribute="bottom" constant="20" id="x3O-n3-TXw"/>
                         </constraints>
                     </view>
