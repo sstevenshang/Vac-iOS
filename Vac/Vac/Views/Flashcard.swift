@@ -24,6 +24,8 @@ class Flashcard: UIViewController {
     
     @IBOutlet weak var definitionLabel: UILabel!
     
+    @IBOutlet weak var synonymsLabel: UILabel!
+    
     var layer: CALayer {
         return mainView.layer
     }
@@ -75,6 +77,7 @@ class Flashcard: UIViewController {
         wordLabel.text = word!.word
         partOfSpeechLabel.text = constructPartOfSpeech(word!)
         definitionLabel.text = constructDefinition(word!)
+        synonymsLabel.text = constructSynonyms(word!)
         
         UIView.transitionFromView(backView, toView: frontView, duration: 0, options: .ShowHideTransitionViews , completion: nil)
         showingFront = true
@@ -102,12 +105,19 @@ class Flashcard: UIViewController {
     
     func constructDefinition(aWord: Word) -> String {
         
+        var aString: String = aWord.definitions[0].thisString
+        
+        return aString
+    }
+    
+    func constructSynonyms(aWord: Word) -> String {
+        
         var aString = String()
         
         if aWord.synonyms != "" {
             aString += aWord.synonyms
         } else{
-            aString += aWord.definitions[0].thisString
+            aString = ""
         }
         
         return aString

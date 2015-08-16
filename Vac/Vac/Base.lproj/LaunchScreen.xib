@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -18,20 +18,21 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigAssLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vsJ-n5-ji6">
                     <rect key="frame" x="90" y="70" width="300" height="300"/>
+                    <color key="backgroundColor" red="0.023529411764705882" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="FIe-ZL-pYQ"/>
                         <constraint firstAttribute="height" constant="300" id="n7c-m2-r0n"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OrgangeStar" translatesAutoresizingMaskIntoConstraints="NO" id="XL8-GC-CD8">
-                    <rect key="frame" x="215" y="40" width="50" height="50"/>
+                    <rect key="frame" x="220" y="50" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="PzI-uy-Wy9"/>
-                        <constraint firstAttribute="width" constant="50" id="Wgz-PY-QX0"/>
+                        <constraint firstAttribute="height" constant="40" id="PzI-uy-Wy9"/>
+                        <constraint firstAttribute="width" constant="40" id="Wgz-PY-QX0"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.047058823529411764" green="0.047058823529411764" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="vsJ-n5-ji6" secondAttribute="centerY" constant="20" id="5Eo-Yu-7bR"/>
                 <constraint firstItem="vsJ-n5-ji6" firstAttribute="top" secondItem="XL8-GC-CD8" secondAttribute="bottom" constant="-20" id="5xv-kX-eth"/>

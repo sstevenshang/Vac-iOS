@@ -86,6 +86,8 @@ class ViewController: UIViewController {
         let mixpanel: Mixpanel = Mixpanel.sharedInstance()
         mixpanel.track("Dictionary launched")
         
+        searchBar.becomeFirstResponder()
+        
 //        let realm = Realm()
 //        realm.write{
 //            self.realm.deleteAll()
