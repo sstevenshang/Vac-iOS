@@ -127,19 +127,24 @@ class FlashcardsViewController: UIViewController {
         
     }
     
+    var hideTip: Bool = false
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
         if segue.identifier == "childView" {
             
             if wordCount == 0{
                 getWords()
-
+                
+            } else {
+                hideTip = true
             }
             
             if words.count != 0 {
                 
                 let destination = segue.destinationViewController as! Flashcard
                 destination.word = assignWord(wordCount)
+                destination.hideTip = hideTip
                 hideEverything(false)
                 
             } else {

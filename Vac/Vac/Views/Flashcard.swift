@@ -26,11 +26,14 @@ class Flashcard: UIViewController {
     
     @IBOutlet weak var synonymsLabel: UILabel!
     
+    @IBOutlet weak var tip: UILabel!
+    
     var layer: CALayer {
         return mainView.layer
     }
     
     var word: Word?
+    var hideTip: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,7 @@ class Flashcard: UIViewController {
         mainView.addGestureRecognizer(touch)
         
         showingFront = true
+        tip.hidden = hideTip
         
         if word != nil{
             handleView()
@@ -65,6 +69,7 @@ class Flashcard: UIViewController {
         if showingFront {
             UIView.transitionFromView(frontView, toView: backView, duration: 0.5, options: .TransitionFlipFromLeft | .ShowHideTransitionViews , completion: nil)
             showingFront = false
+            tip.hidden = true
         } else {
             UIView.transitionFromView(backView, toView: frontView, duration: 0.5, options: .TransitionFlipFromRight | .ShowHideTransitionViews , completion: nil)
             showingFront = true

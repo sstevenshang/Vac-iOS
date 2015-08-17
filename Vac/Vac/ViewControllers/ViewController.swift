@@ -122,7 +122,8 @@ class ViewController: UIViewController {
             
             definitionView.hidden = true
             
-            let searchWord = searchBar.text
+            var searchWord = searchBar.text
+            searchWord = searchWord.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             dictionary.callSession(searchWord, type: "words", completionBlock: { (data: NSData) -> Void in
                 

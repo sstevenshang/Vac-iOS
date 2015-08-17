@@ -1144,14 +1144,28 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tap to see definition side" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjI-UV-laA">
+                                        <rect key="frame" x="206" y="347" width="188.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="HjI-UV-laA" firstAttribute="top" secondItem="vQF-dX-iZG" secondAttribute="bottom" constant="20" id="4mq-XF-z8l"/>
                                     <constraint firstAttribute="centerX" secondItem="vQF-dX-iZG" secondAttribute="centerX" id="8hd-6H-Rbf"/>
                                     <constraint firstItem="vQF-dX-iZG" firstAttribute="leading" secondItem="L1g-Ne-euo" secondAttribute="leading" id="L2I-Ys-nAU"/>
+                                    <constraint firstAttribute="centerX" secondItem="HjI-UV-laA" secondAttribute="centerX" id="erJ-Ic-DAa"/>
+                                    <constraint firstItem="vQF-dX-iZG" firstAttribute="top" secondItem="HjI-UV-laA" secondAttribute="bottom" constant="80" id="qoA-eE-htF"/>
                                     <constraint firstAttribute="centerY" secondItem="vQF-dX-iZG" secondAttribute="centerY" id="wJt-Qz-Zyq"/>
                                     <constraint firstAttribute="trailing" secondItem="vQF-dX-iZG" secondAttribute="trailing" id="wwy-Iw-7o0"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qoA-eE-htF"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
@@ -1184,6 +1198,7 @@
                         <outlet property="mainView" destination="yCc-uX-8dU" id="aTu-dq-vh7"/>
                         <outlet property="partOfSpeechLabel" destination="Ufh-9k-wO6" id="Ki7-fa-jXp"/>
                         <outlet property="synonymsLabel" destination="ZTv-UD-GVv" id="rTS-rp-2XY"/>
+                        <outlet property="tip" destination="HjI-UV-laA" id="cde-hH-cyF"/>
                         <outlet property="wordLabel" destination="vQF-dX-iZG" id="fEb-LK-NJf"/>
                     </connections>
                 </viewController>
