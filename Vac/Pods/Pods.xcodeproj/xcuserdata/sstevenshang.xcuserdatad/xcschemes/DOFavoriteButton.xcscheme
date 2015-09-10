@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB09BAFBA7DC54636E6026B0"
+               BlueprintIdentifier = "B3DBA80F5C6D794E685DB7E4"
                BuildableName = "DOFavoriteButton.framework"
                BlueprintName = "DOFavoriteButton"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -33,7 +33,7 @@ class Flashcard: UIViewController {
     }
     
     var word: Word?
-    var hideTip: Bool!
+    var hideTip: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
