@@ -1,7 +1,8 @@
 # Vac-iOS
 
+- https://itunes.apple.com/us/app/vac-learn-your-words/id1030952963?mt=8
+
 - Vac is a langauge learning apps that help English leaners to effectively learn new words.
-- Building vocabulary is a tedious process. Moreover, the general method used by most learners - looking up words in a dictionary and never look at them again - is extremely inefficient.
 - Using Vac, users can look up words, create new flashcards with the press of a button, and study them anytime they want.
 
 - Vac is currently powered by WordNik's raw API.
